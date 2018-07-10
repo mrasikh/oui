@@ -31,6 +31,7 @@ describe('components/Link', () => {
   it('should render style classes', () => {
     const output = shallow(
       <Link
+        href='http://google.com'
         style='muted'>
         Test Link
       </Link>

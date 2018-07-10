@@ -30,6 +30,19 @@ const Button = ({
 
   const type = isSubmit ? 'submit' : 'button';
 
+  if (!onClick) {
+    return (
+      <div
+        data-oui-component={ true }
+        className={ buttonClassNames }
+        disabled={ isDisabled }
+        onBlur={ onBlur }
+        data-test-section={ testSection }>
+        { children }
+      </div>
+    );
+  }
+
   return (
     <button
       data-oui-component={ true }

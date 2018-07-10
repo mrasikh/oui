@@ -6,6 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 
 import ButtonRow from '../ButtonRow';
 import Button from './index.js';
+import Link from '../Link';
 import ArrowsInline from '../ArrowsInline';
 
 const stories = storiesOf('Button', module);
@@ -92,4 +93,21 @@ stories
           <Button key="5" width="default" size="tight">Tight Button</Button>,
         ] }
       />);
-  });
+  })
+  .add('Button without an onClick', () => {
+    return (
+      <Button onClick={ null }>Faux Button</Button>
+    );
+  })
+  .add('Button without an onClick (disabled)', () => {
+    return (
+      <Button isDisabled={ true }>Faux Button</Button>
+    );
+  })
+  .add('Button that looks like a Link', withInfo()(() => {
+    return (
+      <Button style='unstyled'>
+        <Link>Say Hi</Link>
+      </Button>
+    );
+  }));
