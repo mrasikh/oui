@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+### Added
+- [Patch] Add maxLength prop to Input and Textarea components
 
 ## 31.10.0 - 2018-07-27
 ### Added

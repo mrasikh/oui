@@ -51,7 +51,7 @@ stories
   .add('poptip light theme on the right', withInfo()(() => (
     <Poptip
       trigger='click'
-      content="Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!"
+      content="Ipsaofficiisbadnewsminusearumaaperiam!Aperiamreiciendisvitaenihilliberoet,hic!"
       theme='light'
       position='right'>
       <Button style="unstyled" width="default">

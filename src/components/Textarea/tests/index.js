@@ -150,4 +150,11 @@ describe('components/Textarea', () => {
     expect(component.find('[data-test-section="foo-note"]').length).toBe(1);
     expect(component.find('[data-test-section="foo-note"]').text()).toBe('A short description');
   });
+
+  it('should add a maxLength attribute when maxLength is passed', () => {
+    const component = mount(
+      <Textarea maxLength={ 50 } />
+    );
+    expect(component.find('textarea').prop('maxLength')).toBe(50);
+  });
 });

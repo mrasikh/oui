@@ -21,6 +21,7 @@ class Textarea extends React.Component {
     isReadOnly,
     isRequired,
     isDisabled,
+    maxLength,
     onBlur,
     onChange,
     onFocus,
@@ -47,6 +48,8 @@ class Textarea extends React.Component {
         required={ isRequired }
         readOnly={ isReadOnly }
         disabled={ isDisabled }
+        { ...(typeof maxLength === 'undefined' ? {} : { maxLength }) }
+        maxLength={ maxLength }
         onInput={ onInput }
         onChange={ onChange }
         onBlur={ onBlur }
@@ -122,6 +125,10 @@ Textarea.propTypes = {
   isRequired: PropTypes.bool,
   /** Text that describes the textarea */
   label: PropTypes.string,
+  /**
+   * Max length of the input value
+   */
+  maxLength: PropTypes.number,
   /** Form note for the input */
   note: PropTypes.string,
   /**

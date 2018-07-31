@@ -23,36 +23,58 @@ describe('components/SelectDropdown', function() {
     onChange = jest.fn();
   });
 
-  describe('without a filter', function() {
-    beforeEach(function() {
-      component = mount(<SelectDropdown items={ items } value={ 'value 2' } onChange={ onChange } />);
+  it('should render all items in dropdown', function() {
+    component = mount(<SelectDropdown items={ items } value={ 'value 2' } onChange={ onChange } />);
+    const activator = component.find('Button');
+    activator.simulate('click');
+    const listItems = component.find('SelectOption');
+    expect(listItems).toHaveLength(2);
+
+    const item1 = listItems.at(0);
+    expect(item1.text()).toContain('label 1');
+    expect(item1.text()).toContain('description 1');
+    expect(item1.props().isSelected).toEqual(false);
+
+    const item2 = listItems.at(1);
+    expect(item2.text()).toContain('label 2');
+    expect(item2.text()).toContain('description 2');
+    expect(item2.props().isSelected).toEqual(true);
+  });
+
+  it('should call onChange when another item is selected', function() {
+    component = mount(<SelectDropdown items={ items } value={ 'value 2' } onChange={ onChange } />);
+    const activator = component.find('Button');
+    activator.simulate('click');
+    const listItems = component.find('DropdownBlockLink');
+    const item1 = listItems.at(0).find('[data-test-section="dropdown-block-link-value 1"]');
+    item1.simulate('click');
+    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith('value 1');
+  });
+
+  it('should set the width of the activator', function() {
+    component = mount(
+      <SelectDropdown
+        items={ items }
+        value={ 'value 2' }
+        onChange={ onChange }
+        width="400px"
+      />);
+    expect(component.find('Dropdown').prop('activator').props.style).toEqual({
+      width: '400px',
     });
+  });
 
-    it('should render all items in dropdown', function() {
-      const activator = component.find('Button');
-      activator.simulate('click');
-      const listItems = component.find('SelectOption');
-      expect(listItems).toHaveLength(2);
-
-      const item1 = listItems.at(0);
-      expect(item1.text()).toContain('label 1');
-      expect(item1.text()).toContain('description 1');
-      expect(item1.props().isSelected).toEqual(false);
-
-      const item2 = listItems.at(1);
-      expect(item2.text()).toContain('label 2');
-      expect(item2.text()).toContain('description 2');
-      expect(item2.props().isSelected).toEqual(true);
-    });
-
-    it('should call onChange when another item is selected', function() {
-      const activator = component.find('Button');
-      activator.simulate('click');
-      const listItems = component.find('DropdownBlockLink');
-      const item1 = listItems.at(0).find('[data-test-section="dropdown-block-link-value 1"]');
-      item1.simulate('click');
-      expect(onChange).toHaveBeenCalled();
-      expect(onChange).toHaveBeenCalledWith('value 1');
-    });
+  it('should set the width of the content', function() {
+    component = mount(
+      <SelectDropdown
+        items={ items }
+        value={ 'value 2' }
+        onChange={ onChange }
+        minDropdownWidth="400px"
+      />);
+    const activator = component.find('Button');
+    activator.simulate('click');
+    expect(component.find('DropdownContents').prop('minWidth')).toEqual('400px');
   });
 });

@@ -111,19 +111,20 @@ class SelectDropdown extends React.Component {
 
     return (
       <Dropdown
-        width={ width }
         { ...(zIndex ? { zIndex } : {}) }
         activator={ (
-          <Button
-            isDisabled={ this.props.isDisabled }
-            style={ buttonStyle }
-            testSection={ this.props.testSection }
-            width="full">
-            <div className="flex flex-align--center" data-track-id={ this.props.trackId }>
-              <span style={{overflow: 'hidden'}} className="flex flex--1">{ selectedItem.label }</span>
-              <span className="push--left oui-arrow-inline--down" />
-            </div>
-          </Button>
+          <div style={{ width: width}}>
+            <Button
+              isDisabled={ this.props.isDisabled }
+              style={ buttonStyle }
+              testSection={ this.props.testSection }
+              width="full">
+              <div className="flex flex-align--center" data-track-id={ this.props.trackId }>
+                <span style={{overflow: 'hidden'}} className="flex flex--1">{ selectedItem.label }</span>
+                <span className="push--left oui-arrow-inline--down" />
+              </div>
+            </Button>
+          </div>
         ) }>
         { this.renderContents() }
       </Dropdown>

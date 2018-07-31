@@ -27,6 +27,7 @@ stories
         isOptional={ boolean('isOptional', false) }
         label={ text('Label', '') }
         max={ number('max', 50) }
+        maxLength={ number('maxLength', 250) }
         min={ number('min', 10) }
         onChange={ action('on change') }
         onBlur={ action('on blur') }
