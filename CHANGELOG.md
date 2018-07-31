@@ -6,6 +6,9 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 ### Added
+- [Feature] Added DiscloseTable component
+- [Patch] Added width prop for activator of SelectDropdown
+- [Patch] Force break long strings in Poptip
 - [Patch] Add maxLength prop to Input and Textarea components
 
 ## 31.10.0 - 2018-07-27
