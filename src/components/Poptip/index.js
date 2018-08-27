@@ -28,6 +28,9 @@ export default class Poptip extends React.Component {
       PropTypes.node,
       PropTypes.string,
     ]).isRequired,
+    /** how long it takes after a trigger event is fired for a tooltip to show |
+     * default => 0 */
+    delay: PropTypes.number,
     /** disable value | default => false */
     disable: PropTypes.bool,
     /** should the poptip content be animated | default => true */
@@ -66,6 +69,7 @@ export default class Poptip extends React.Component {
     const {
       children,
       content,
+      delay,
       disable,
       isAnimated,
       position,
@@ -77,6 +81,7 @@ export default class Poptip extends React.Component {
       <Tooltip
         arrow={ true }
         disabled={ disable }
+        delay={ delay }
         { ...(!isAnimated ? { duration: 0 } : {}) }
         html={ <div>{content}</div> }
         position={ position }

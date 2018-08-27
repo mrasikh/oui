@@ -71,4 +71,14 @@ stories
         Customizable Poptip
       </Button>
     </Poptip>
+  )))
+  .add('basic poptip with delay', withInfo()(() => (
+    <Poptip
+      trigger='mouseenter'
+      delay={ 1000 }
+      content="Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!">
+      <Button width="default">
+        Default Poptip
+      </Button>
+    </Poptip>
   )));
