@@ -58,6 +58,7 @@ TabNav.propTypes = {
   /** Various styles that can be given to the navigation */
   style: PropTypes.arrayOf(PropTypes.oneOf([
     'center',
+    'dashboard',
     'header',
     'left-pad',
     'plain',

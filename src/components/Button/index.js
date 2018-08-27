@@ -15,6 +15,7 @@ const Button = ({
   isDisabled = false,
   onBlur,
   onClick,
+  onMouseDown,
   size,
   style,
   testSection,
@@ -38,6 +39,7 @@ const Button = ({
       type={ type }
       onBlur={ onBlur }
       onClick={ onClick }
+      onMouseDown={ onMouseDown }
       data-test-section={ testSection }
       aria-label={ ariaLabel }>
       { children }
@@ -60,6 +62,8 @@ Button.propTypes = {
   onBlur: PropTypes.func,
   /** Function that fires when the button is clicked on */
   onClick: PropTypes.func,
+  /** Function that fires when the button is mouse downed */
+  onMouseDown: PropTypes.func,
   /** Various height and width options */
   size: PropTypes.oneOf([
     'tiny',
@@ -92,6 +96,7 @@ Button.propTypes = {
 Button.defaultProps = {
   onBlur: () => {},
   onClick: () => {},
+  onMouseDown: () => {},
 };
 
 Button.displayName = 'Button';

@@ -18,7 +18,8 @@
 ////
 
 .#{$namespace}disclose, 
-.oui-disclose {
+.oui-disclose,
+%oui-disclose {
   @extend %kill-last-child-margin;
 
   &__link {

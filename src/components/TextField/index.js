@@ -1,3 +1,8 @@
+/**
+ * DEPERCATION NOTICE: TextField is no longer being maintained,
+ * use Input component instead.
+ */
+
 import React from 'react';
 import Label from '../Label';
 import classnames from 'classnames';
@@ -48,8 +53,11 @@ const TextField = ({
   let inputType = type;
   if (type === 'percent') {
     inputType = 'number';
-    min = 0;
-    max = 100;
+    // min must be less than max, and both must be within 0 - 100.
+    // Otherwise, ignore and set to default
+    const oldMin = min;
+    min = (!min || min < 0 || min > 100 || min > max) ? 0 : min;
+    max = (!max || max < 0 || max > 100 || max < oldMin) ? 100 : max;
   }
 
   return (
@@ -151,7 +159,10 @@ TextField.propTypes = {
     'tel',
   ]).isRequired,
   /** Text within the input */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 export default TextField;

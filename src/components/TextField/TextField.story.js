@@ -43,14 +43,16 @@ stories
         placeholder="Just a placeholder"
         type="text"
       />);
-  }).add('Percent', () => {
+  }).add('Percent', withInfo()(() => {
     return (
       <TextField
         placeholder="100"
         defaultValue={ text('defaultValue', '0') }
         type="percent"
+        max={ number('max', 100) }
+        min={ number('min', 0) }
       />);
-  }).add('Error state', () => {
+  })).add('Error state', () => {
     return (
       <TextField
         label="Field label"

@@ -34,6 +34,7 @@ class Input extends React.Component {
     onFocus,
     min,
     max,
+    maxLength,
     testSection,
     focus,
     textAlign }) {
@@ -71,6 +72,7 @@ class Input extends React.Component {
         onFocus={ onFocus }
         min={ min }
         max={ max }
+        { ...(typeof maxLength === 'undefined' ? {} : { maxLength }) }
         data-test-section={ testSection }
         autoFocus={ focus }
       />
@@ -149,6 +151,11 @@ Input.propTypes = {
    * Max value for the `input`. Should be used only when `type` is `number`.
    */
   max: PropTypes.number,
+  /**
+   * Max length of the input value. Should be used only when type is 'text',
+   * 'email', 'search', 'password', 'tel', or 'url'.
+   */
+  maxLength: PropTypes.number,
   /**
    * Min value for the `input`. Should be used only when `type` is `number`.
    */

@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from '../index';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
 const data = [
@@ -12,9 +12,10 @@ const data = [
 
 describe('components/Dropdown', () => {
   it('should render children when isOpen is true', () => {
-    const component = shallow(
+    const component = mount(
       <Dropdown
         icon={ true }
+        isOpen={ true }
         buttonContent='Dropdown'>
         <ul>
           { data.map((item, index) => {
@@ -26,7 +27,9 @@ describe('components/Dropdown', () => {
         </ul>
       </Dropdown>
     );
-    expect(shallowToJson(component)).toMatchSnapshot();
+
+    expect(component.find('Dropdown').props().isOpen).toBe(true);
+    expect(component.find('ul').exists()).toBe(true);
   });
 
   it('should not render children when isDisabled is true', () => {

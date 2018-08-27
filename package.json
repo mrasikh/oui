@@ -1,6 +1,6 @@
 {
   "name": "optimizely-oui",
-  "version": "31.7.2",
+  "version": "31.12.3",
   "description": "Optimizely's Component Library.",
   "private": false,
   "main": "dist/main.js",
@@ -8,8 +8,9 @@
   "dependencies": {
     "clipboard": "^1.5.12",
     "highlight.js": "^9.5.0",
+    "lodash.noop": "^3.0.1",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-oui-icons": "^2.1.0",
+    "react-oui-icons": "^2.2.0",
     "react-popper": "^0.8.2",
     "react-tippy": "^1.2.2",
     "recompose": "^0.26.0",
@@ -91,7 +92,7 @@
     "babel": "babel src/ --out-dir dist/js --ignore \"tests/*.js, src/js\"",
     "codecov": "codecov",
     "jest": "jest --config jest.config.js --no-cache",
-    "jest:watch": "jest --config .jest.config.json --watch",
+    "jest:watch": "jest --config jest.config.js --watch",
     "eslint": "eslint --ext .jsx --ext .js . --max-warnings 0",
     "preversion": "git checkout master && git pull --rebase=false",
     "postversion": "npm run postversion:publish && npm run postversion:update-devel",

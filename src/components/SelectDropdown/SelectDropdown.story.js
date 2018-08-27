@@ -47,7 +47,28 @@ stories.add('default', withInfo()(() => {
         items={ items }
         value={ 'dog' }
         onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
+})).add('width of activator', withInfo()(() => {
+  return (
+    <Container>
+      <SelectDropdown
+        items={ items }
+        value={ 'dog' }
+        onChange={ action('SelectDropdown value changed') }
         width={ '400px ' }
+      />
+    </Container>
+  );
+})).add('width of dropdown', withInfo()(() => {
+  return (
+    <Container>
+      <SelectDropdown
+        items={ items }
+        value={ 'dog' }
+        onChange={ action('SelectDropdown value changed') }
+        minDropdownWidth={ '400px ' }
       />
     </Container>
   );

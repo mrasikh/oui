@@ -14,13 +14,16 @@ const Checkbox = ({
   defaultChecked,
   isDisabled,
   label,
+  labelWeight,
   onChange,
   testSection,
 }) => {
   const labelClassNames = classNames({
     'flush--bottom': true,
     'push--left': true,
-    'weight--normal': true,
+    'weight--light': labelWeight === 'light',
+    'weight--normal': labelWeight === 'normal',
+    'weight--bold': labelWeight === 'bold',
     'cursor--pointer': true,
     'oui-label--disabled': isDisabled,
   });
@@ -56,12 +59,21 @@ Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
   /** Prevents checkbox from being modified and appears disabled */
   isDisabled: PropTypes.bool,
-  /** Text that describes the checkbox */
-  label: PropTypes.string,
+  /** Label that describes the checkbox */
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+  /** Font weight for the label text */
+  labelWeight: PropTypes.oneOf(['light', 'normal', 'bold']),
   /** Function that fires when the checkbox is clicked */
   onChange: PropTypes.func,
   /** Hook for automated JavaScript tests */
   testSection: PropTypes.string,
+};
+
+Checkbox.defaultProps = {
+  labelWeight: 'normal',
 };
 
 export default Checkbox;

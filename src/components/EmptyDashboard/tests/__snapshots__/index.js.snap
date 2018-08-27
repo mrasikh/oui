@@ -6,6 +6,7 @@ exports[`components/EmptyDashboard should render 1`] = `
     <Button
       onBlur={[Function]}
       onClick={[Function]}
+      onMouseDown={[Function]}
       style="highlight"
     >
       Highlight Button
@@ -100,6 +101,7 @@ exports[`components/EmptyDashboard should render 1`] = `
           <Button
             onBlur={[Function]}
             onClick={[Function]}
+            onMouseDown={[Function]}
             style="highlight"
           >
             <button
@@ -108,6 +110,7 @@ exports[`components/EmptyDashboard should render 1`] = `
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
+              onMouseDown={[Function]}
               type="button"
             >
               Highlight Button

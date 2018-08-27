@@ -110,34 +110,6 @@ exports[`components/Dropdown should render an activator node when passed as a pr
 />
 `;
 
-exports[`components/Dropdown should render children when isOpen is true 1`] = `
-<withHandlers(withState(Dropdown))
-  arrowIcon="none"
-  buttonContent="Dropdown"
-  icon={true}
-  isOpen={false}
-  toggle={[Function]}
->
-  <ul>
-    <li
-      key="0"
-    >
-      Manual
-    </li>
-    <li
-      key="1"
-    >
-      Maximize Conventions
-    </li>
-    <li
-      key="2"
-    >
-      Faster Results
-    </li>
-  </ul>
-</withHandlers(withState(Dropdown))>
-`;
-
 exports[`components/Dropdown should use oui-button--full class when fullWidth is true 1`] = `
 <withHandlers(withState(Dropdown))
   arrowIcon="none"

@@ -1,5 +1,173 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`components/TextField custom min max percentages invalid custom maximum should revert to the default if it is above 100 1`] = `
+<div
+  className={null}
+  data-oui-component={true}
+>
+  <span
+    className="flex flex-align--center"
+  >
+    <input
+      className="oui-text-input text--right"
+      disabled={false}
+      max={100}
+      min={0}
+      type="number"
+    />
+    <span
+      className="push-half--left push--right"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`components/TextField custom min max percentages invalid custom maximum should revert to the default if it is below 0 1`] = `
+<div
+  className={null}
+  data-oui-component={true}
+>
+  <span
+    className="flex flex-align--center"
+  >
+    <input
+      className="oui-text-input text--right"
+      disabled={false}
+      max={100}
+      min={0}
+      type="number"
+    />
+    <span
+      className="push-half--left push--right"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`components/TextField custom min max percentages invalid custom maximum should revert to the default if it is below the minimum 1`] = `
+<div
+  className={null}
+  data-oui-component={true}
+>
+  <span
+    className="flex flex-align--center"
+  >
+    <input
+      className="oui-text-input text--right"
+      disabled={false}
+      max={100}
+      min={0}
+      type="number"
+    />
+    <span
+      className="push-half--left push--right"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`components/TextField custom min max percentages invalid custom minimum should revert to the default if it is above 100 1`] = `
+<div
+  className={null}
+  data-oui-component={true}
+>
+  <span
+    className="flex flex-align--center"
+  >
+    <input
+      className="oui-text-input text--right"
+      disabled={false}
+      max={100}
+      min={0}
+      type="number"
+    />
+    <span
+      className="push-half--left push--right"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`components/TextField custom min max percentages invalid custom minimum should revert to the default if it is above the maximum 1`] = `
+<div
+  className={null}
+  data-oui-component={true}
+>
+  <span
+    className="flex flex-align--center"
+  >
+    <input
+      className="oui-text-input text--right"
+      disabled={false}
+      max={100}
+      min={0}
+      type="number"
+    />
+    <span
+      className="push-half--left push--right"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`components/TextField custom min max percentages invalid custom minimum should revert to the default if it is below 0 1`] = `
+<div
+  className={null}
+  data-oui-component={true}
+>
+  <span
+    className="flex flex-align--center"
+  >
+    <input
+      className="oui-text-input text--right"
+      disabled={false}
+      max={100}
+      min={0}
+      type="number"
+    />
+    <span
+      className="push-half--left push--right"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
+exports[`components/TextField custom min max percentages should allow minimum and maximum percentages when type is percent 1`] = `
+<div
+  className={null}
+  data-oui-component={true}
+>
+  <span
+    className="flex flex-align--center"
+  >
+    <input
+      className="oui-text-input text--right"
+      disabled={false}
+      max={85}
+      min={70}
+      type="number"
+    />
+    <span
+      className="push-half--left push--right"
+    >
+      %
+    </span>
+  </span>
+</div>
+`;
+
 exports[`components/TextField should render HTML type=number for when prop.type is percent 1`] = `
 <div
   className={null}

@@ -1,8 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classnames from 'classnames';
 
 const RangeSlider = (props) => {
-  const { value, onChange } = props;
+  const {
+    value,
+    onChange,
+    isDisabled,
+  } = props;
+
+  const rangeDisplayClasses = classnames({
+    'range-display': true,
+    'range-display--disabled': isDisabled,
+  });
+
   return (
     <div className="oui-rangeslider" data-test-section={ props.testSection }>
       <div className="oui-grid">
@@ -11,7 +22,7 @@ const RangeSlider = (props) => {
             <label className="oui-label muted flush flex--1">0%</label>
             <label className="oui-label muted flush">100%</label>
           </div>
-          <div className="range-display">
+          <div className={ rangeDisplayClasses }>
             <div
               className="range-display range-display-overlay"
               style={{ left: value + '%' }}>
@@ -37,6 +48,7 @@ const RangeSlider = (props) => {
             step="1"
             value={ value }
             onChange={ onChange }
+            disabled={ isDisabled }
           />
         </div>
       </div>
@@ -45,6 +57,8 @@ const RangeSlider = (props) => {
 };
 
 RangeSlider.propTypes = {
+  /** Whether it is disabled, will render as greyscale if so **/
+  isDisabled: PropTypes.bool,
   /** onChange function */
   onChange: PropTypes.func,
   /** Hook for automated JavaScript tests */

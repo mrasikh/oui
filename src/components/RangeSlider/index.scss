@@ -67,6 +67,9 @@
     left: 12px;
     right: 11px;
   }
+  .range-display--disabled{
+    filter: grayscale(1) opacity(0.3);
+  }
   .range-display.range-display-overlay {
     background-color: white;
     background-image: none;

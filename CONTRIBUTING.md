@@ -1,74 +1,84 @@
 # Contributing to OUI
 
-## Install OUI
+OUI is an open source repo where anyone can contribute, and only Optimizely employees have permission to create an npm release.
 
-Requires Node 6.4+
+## :pushpin: Install & Run
 
-1. `git clone https://github.com/optimizely/oui.git`
-1. If you do not have yarn, `brew install yarn`
+Requires [Node](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable)
+
+1. `git clone https://github.com/optimizely/oui.git && cd oui`
 1. `yarn install`
 
-## Running OUI locally
+Then you can run and develop locally:
 
-Here are a few commonly used commands:
+* `yarn storybook` - launch React Storybook locally
+* `yarn build-storybook` - build static Storybook for documentation
+* `yarn test` - test code for syntax errors
 
-* `yarn start` - compiles Sass, transpiles JavaScript, and builds the documentation
-* `yarn storybook` - compile and launch React Storybook locally
-* `yarn build-storybook` - build static version of Storybook for documentation
-* `yarn test` - lints and tests the codebase
-* `yarn docs:watch` - runs the documentation environment locally
-* `yarn docs:build:json` - rebuilds the JSON that powers the documentation. This command is helpful in conjunction with `yarn docs:watch` when updating Sass or React examples.
 
-Run `yarn list` for an entire list.
+## :pencil: Develop
 
-## Development process
+1. Create branch: `git checkout -b username/branch-name`
+2. Make and commit your changes
+3. Update `CHANGELOG.md` and note your changes directly under "Unreleased":
 
-1. Branch off of `devel`: `git checkout -b username/branch-name`.
-2. Make your changes, commit your code.
-3. Add your change to the "Unreleased" section of the `CHANGELOG.md` under one of the following sub-sections:
-  * **Added**: for new features.
-  * **Changed**: for changes in existing functionality.
-  * **Deprecated**: for once-stable features removed in upcoming releases.
-  * **Removed**: for deprecated features removed in this release.
-  * **Fixed**: for any bug fixes.
-  * **Security**: to invite users to upgrade in case of vulnerabilities.
+    ```
+    ## Unreleased
+    ### Added/Changed/Deprecated/Removed/Fixed/Security
+    - [Release/Feature/Patch] Describe your change here. (#GITHUB_ISSUE)
+    ```
 
-  Your message should follow the following format:
+    > **Note:** please do not create a new version number header, this is done only during release.
 
-  ```
-  [Importance] Message (GitHub Issue Number)
-  ```
+4. Verify your OUI changes work as expected in the Optimizely repo.
 
-  Where `Importance` is:
+    Use npm link: `cd ~/optimizely && npm link ~/optimizely-oui`
 
-  * Patch - Backward compatible bug fixes
-  * Feature - Added functionality in a backward compatible manner
-  * Release - Breaking changes to code or large visual design modifications. Renaming a class or redesigning the button styles, for example, would be a `Release`.
+    Or the long-hand version:
 
-  GitHub issue number is the number of the GitHub issue, if applicable, preceded by a `#`. Ideally, each contribution should have a corresponding issue that provides more context.
+    ```
+    cd ~/projects/optimizely-oui    # go into package directory
+    npm link                        # creates global link
+    cd ~/projects/optly             # go into some other package directory
+    npm link optimizely-oui         # installs your local package
+    ```
 
+5. `git push` your changes to GitHub
+6. [Open a pull request](https://github.com/optimizely/oui/compare) of your branch, add at least one reviewer
+    > **Making a breaking change?** Please [update the Optimizely app](https://github.com/optimizely/oui/issues/360) and bump the `package.json` OUI version to prevent unreleased changes from blocking future releases.
+
+## :warning: Pre-Release
+
+Don't forget these before you create a release:
+
+1. Re-build Storybook documentation: `yarn build-storybook`
+2. Export your component in main.js: `export { default as TheName } from './components/TheName';`
+3. Include details in `Changelog.md` of your changes and the related GitHub issue
 4. `git push` your changes to GitHub.
-5. Open a pull request comparing your feature `branch-name` against `devel`. Add at least one reviewer.
+5. Open a pull request comparing your feature `branch-name` against `devel`.
 
-**Confused by Patch, Feature, and Release?** We've [written a blog post](https://medium.com/design-optimizely/how-to-version-your-ui-library-1c7a1b7ee23a) to explain the differences in more detail.
+## :ship: Release a New Version
 
-**Merging a breaking change?** We've [adopted a policy](https://github.com/optimizely/oui/issues/360) requiring UI Engineers merging a breaking change to immediately release a new version of OUI and update the Optimizely frontend to use the new release. This prevents us from getting in a state where backward compatible commits are blocked in the "Unreleased" queue by complicated breaking changes.
+Both UI Engineers and the Frontend team have permission to release OUI via `npm version ...`:
 
+1. Get latest code: `git checkout devel && git pull && git checkout master && git pull`
+2. Merge your changes: `git merge devel`
+3. Add a new header to `CHANGELOG.md` under “Unreleased” with the [new version number](https://medium.com/design-optimizely/how-to-version-your-ui-library-1c7a1b7ee23a):
 
-## Releasing a new version of OUI
+    ```
+    ## Unreleased
 
-0. Commit changes, push, create PR, get approval, squash & merge...
-1. Run `git checkout devel && git pull && git checkout master && git pull` to get the latest version of each branch.
-2. Use `git merge devel` to merge `devel` into `master`.
-3. Open `CHANGELOG.md` and determine the new version number. Version numbers follow the format `x.y.z` where each letter corresponds to: `Release.Feature.Patch`. You should increase the number of the highest severity change in the version. If there is a `Release` change, `23.1.9` would become `24.0.0`. But if there are only `Patch` changes, then `23.1.9` becomes `23.1.10`.
-4. Add a section heading above the “Unreleased” contributions that includes the version number.
-5. Commit the change on `master`: `git add . && git commit -a -m 'Prep for new release version x.y.z'`
-6. Run one of these depending on the highest importance issue this release:
-  * `[Patch]` changes: `npm version patch`
-  * `[Feature]` changes: `npm version minor`
-  * `[Release]` changes: `npm version major`
-7. [Create a new release on GitHub](https://github.com/optimizely/oui/releases/new). It should [look like this](https://www.dropbox.com/s/1nln5ttbxfbacuv/Screenshot%202015-09-02%2011.31.21.png):
-  * Select the new tag version
-  * Leave “Release title” blank
-  * Paste in “Unreleased” contributions from the `CHANGELOG.md` release notes
-8. **Note for Optimizely developers:** Please manually bump OUI in the Optimizely app's `package.json` and ensure nothing broke locally before releasing.
+    ## 31.0.0 - 2018-04-13
+    - [Release] Added a cool breaking change. (#999)
+    ```
+4. Commit to master: `git add . && git commit -a -m 'Prep for new release version x.y.z'`
+5. Run one of these depending on the highest importance issue this release:
+    * `[Patch]` changes: `npm version patch`
+    * `[Feature]` changes: `npm version minor`
+    * `[Release]` changes: `npm version major`
+6. [Create a new release on GitHub](https://github.com/optimizely/oui/releases/new). It should [look like this](https://www.dropbox.com/s/1nln5ttbxfbacuv/Screenshot%202015-09-02%2011.31.21.png):
+    * Select the new tag version
+    * Leave “Release title” blank
+    * Paste in “Unreleased” contributions from the `CHANGELOG.md` release notes
+7. Bump the OUI version number in Optimizely's [`package.json`](https://github.com/optimizely/optimizely/blob/devel/src/www/frontend/package.json) and [test to ensure compatibility](https://docs.google.com/document/d/1TTfdhCSH7mPBeUzVme99qHR-QsFg7PTKP2lGqB9Dk3Y/edit#heading=h.ktasdjfn5j1h).
+8. You're done :sunglasses:

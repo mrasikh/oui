@@ -5,6 +5,60 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Patch] Add mousedown handler to Button component
+
+## 31.12.3 - 2018-08-24
+### Changed
+- [Patch] Upgrade react-oui-icons to include `#getting-started`
+
+## 31.12.2 - 2018-08-23
+### Changed
+- [Patch] Allow labelWeight prop to be set on Radio component
+- [Patch] Allow custom min and max values for Textfield components of `percent` type
+
+## 31.12.1 - 2018-08-22
+### Changed
+- [Patch] Remove package-lock.json from repo since we officially use yarn and yarn.lock
+- [Patch] Allow labelWeight prop to be set on Checkbox component
+
+## 31.12.0 - 2018-08-22
+### Changed
+- [Feature] Added EditableInput component
+- [Patch] Update SCSS to add selectors for `.oui-label` where `.#{$namespace}label` is used. (#1016)
+- [Patch] Vertically align arrow in DiscloseTable.Row
+- [Patch] Allow isOpen prop to be set
+
+
+## 31.11.1 - 2018-08-06
+### Changed
+- [Patch] Allow Node types for SelectDropdown label prop
+- [Patch] Allow numbers for TextField value prop
+- [Patch] Allow Node types for Checkbox label prop
+
+## 31.11.0 - 2018-08-01
+### Added
+- [Feature] Added DiscloseTable component
+- [Patch] Added width prop for activator of SelectDropdown
+- [Patch] Force break long strings in Poptip
+- [Patch] Add maxLength prop to Input and Textarea components
+
+## 31.10.0 - 2018-07-27
+### Added
+- [Feature] Added isDisabled prop to BlockList.Item component
+- [Feature] Updated RangeSlider to support isDisabled
+
+## 31.9.1 - 2018-07-18
+### Changed
+- [Patch] Update tabs small with custom type styles per Ron
+- [Patch] Rotate Travis CI/NPM publish key
+
+## 31.8.0 - 2018-07-13
+### Added
+- [Feature] Add <Accordion> React component from existing OUI HTML/CSS
+- [Feature] Add <TabNav style=dashboard> style ported from X (#989)
+
+### Fixed
+- [Patch] Updated CONTRIBUTING.md file with better instructions on installing, developing in and releasing new versions of OUI
 
 ## 31.7.2 - 2018-07-11
 ### Fixed

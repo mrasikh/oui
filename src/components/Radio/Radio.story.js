@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import Radio from './index.js';
@@ -15,19 +15,23 @@ stories
     </div>
   ));
 
-stories.add('default', withInfo()(() => {
-  return (
-    <Radio
-      data-test-section="test-radio"
-      name='this is a radio'
-      label='this is a radio'
-    />);
-}));
-
-// isDisabled,
-// testSection,
-// name,
-// defaultChecked,
-// checked,
-// onChange,
-// label,
+stories
+  .add('default', withInfo()(() => {
+    return (
+      <Radio
+        testSection={ text('testSection', 'test-radio') }
+        name={ text('name', 'this is a radio') }
+        label={ text('label', 'this is a radio') }
+      />
+    );
+  }))
+  .add('with labelWeight prop', withInfo()(() => {
+    return (
+      <Radio
+        testSection={ text('testSection', 'test-radio') }
+        name={ text('name', 'this is a radio') }
+        label={ text('label', 'this is a radio') }
+        labelWeight={ select('labelWeight', ['light', 'normal', 'bold'], 'bold') }
+      />
+    );
+  }));

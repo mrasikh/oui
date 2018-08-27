@@ -36,6 +36,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  
+  /// TODO: move these styles once all accordions have been reactified
+  &__react {
+    background: map-fetch($color, background, faint);
+    height: 100%;
+  }
 
   &__link {
     transition-property: height;
@@ -72,8 +78,14 @@
   &__item {
     display: flex;
     flex-direction: column;
+    min-height: $accordion-link-height;
     height: $accordion-link-height;
     overflow: hidden;
+
+    &__react {
+      flex: 0.001;
+      transition: flex-grow 0.166s ease-in-out;
+    }
 
     &:first-child .accordion__link {
       box-shadow: none;

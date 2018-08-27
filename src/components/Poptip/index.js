@@ -83,7 +83,7 @@ export default class Poptip extends React.Component {
         disabled={ disable }
         delay={ delay }
         { ...(!isAnimated ? { duration: 0 } : {}) }
-        html={ <div>{content}</div> }
+        html={ <div className="force-break">{content}</div> }
         position={ position }
         theme={ theme }
         trigger={ trigger }>

@@ -218,4 +218,11 @@ describe('components/Input', () => {
     expect(component.find('[data-test-section="foo-note"]').length).toBe(1);
     expect(component.find('[data-test-section="foo-note"]').text()).toBe('A short description');
   });
+
+  it('should add a maxLength attribute when maxLength is passed', () => {
+    const component = mount(
+      <Input type="text" maxLength={ 50 } />
+    );
+    expect(component.find('input').prop('maxLength')).toBe(50);
+  });
 });

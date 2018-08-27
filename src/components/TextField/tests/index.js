@@ -138,5 +138,99 @@ describe('components/TextField', () => {
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 
+  describe('custom min max percentages', function() {
 
+    it('should allow minimum and maximum percentages when type is percent', () => {
+      const output = shallow(
+        <TextField
+          type='percent'
+          min={ 70 }
+          max={ 85 }
+        />
+      );
+      expect(output.find('input').props().min).toBe(70);
+      expect(output.find('input').props().max).toBe(85);
+      expect(shallowToJson(output)).toMatchSnapshot();
+    });
+
+    describe('invalid custom minimum', function() {
+
+      it('should revert to the default if it is below 0', () => {
+        const output = shallow(
+          <TextField
+            type='percent'
+            min={ -10 }
+          />
+        );
+        expect(output.find('input').props().min).toBe(0);
+        expect(output.find('input').props().max).toBe(100);
+        expect(shallowToJson(output)).toMatchSnapshot();
+      });
+
+      it('should revert to the default if it is above 100', () => {
+        const output = shallow(
+          <TextField
+            type='percent'
+            min={ 101 }
+          />
+        );
+        expect(output.find('input').props().min).toBe(0);
+        expect(output.find('input').props().max).toBe(100);
+        expect(shallowToJson(output)).toMatchSnapshot();
+      });
+
+      it('should revert to the default if it is above the maximum', () => {
+        const output = shallow(
+          <TextField
+            type='percent'
+            min={ 80 }
+            max={ 79 }
+          />
+        );
+        expect(output.find('input').props().min).toBe(0);
+        expect(output.find('input').props().max).toBe(100);
+        expect(shallowToJson(output)).toMatchSnapshot();
+      });
+    });
+
+    describe('invalid custom maximum', function() {
+
+      it('should revert to the default if it is below 0', () => {
+        const output = shallow(
+          <TextField
+            type='percent'
+            max={ -10 }
+          />
+        );
+        expect(output.find('input').props().min).toBe(0);
+        expect(output.find('input').props().max).toBe(100);
+        expect(shallowToJson(output)).toMatchSnapshot();
+      });
+
+      it('should revert to the default if it is above 100', () => {
+        const output = shallow(
+          <TextField
+            type='percent'
+            max={ 101 }
+          />
+        );
+        expect(output.find('input').props().min).toBe(0);
+        expect(output.find('input').props().max).toBe(100);
+        expect(shallowToJson(output)).toMatchSnapshot();
+      });
+
+      it('should revert to the default if it is below the minimum', () => {
+        const output = shallow(
+          <TextField
+            type='percent'
+            min={ 80 }
+            max={ 79 }
+          />
+        );
+        expect(output.find('input').props().min).toBe(0);
+        expect(output.find('input').props().max).toBe(100);
+        expect(shallowToJson(output)).toMatchSnapshot();
+      });
+    });
+  });
 });

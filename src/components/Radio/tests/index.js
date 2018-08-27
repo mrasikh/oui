@@ -86,6 +86,34 @@ describe('components/Radio', () => {
     expect(shallowToJson(component)).toMatchSnapshot();
   });
 
+  it('should add weight--normal class to label text when no labelWeight prop present', () => {
+    const component = mount(<Radio />);
+
+    const label = component.find('.weight--normal');
+    expect(label.length).toBe(1);
+  });
+
+  it('should add weight--normal class to label text when labelWeight prop = "normal"', () => {
+    const component = mount(<Radio labelWeight="normal" />);
+
+    const label = component.find('.weight--normal');
+    expect(label.length).toBe(1);
+  });
+
+  it('should add weight--light class to label text when labelWeight prop = "light"', () => {
+    const component = mount(<Radio labelWeight="light" />);
+
+    const label = component.find('.weight--light');
+    expect(label.length).toBe(1);
+  });
+
+  it('should add weight--bold class to label text when labelWeight prop = "bold"', () => {
+    const component = mount(<Radio labelWeight="bold" />);
+
+    const label = component.find('.weight--bold');
+    expect(label.length).toBe(1);
+  });
+
   it('should ====OJO====', () => {
     const radioChange = jest.fn();
     const radio = mount(<Radio onChange={ radioChange } name="goose" />);

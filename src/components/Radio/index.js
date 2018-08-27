@@ -17,11 +17,14 @@ const Radio = ({
   checked,
   onChange,
   label,
+  labelWeight,
 }) => {
   const labelClassNames = classNames({
     'flush--bottom': true,
     'push--left': true,
-    'weight--normal': true,
+    'weight--light': labelWeight === 'light',
+    'weight--normal': labelWeight === 'normal',
+    'weight--bold': labelWeight === 'bold',
     'cursor--pointer': true,
     'oui-label--disabled': isDisabled,
   });
@@ -62,6 +65,8 @@ Radio.propTypes = {
   isDisabled: PropTypes.bool,
   /** Text that describes the radio input */
   label: PropTypes.string,
+  /** Font weight for the label text */
+  labelWeight: PropTypes.oneOf(['light', 'normal', 'bold']),
   /**
     String that can be used to identify a set of radio inputs so that only one
     in the set is checked at any given time.
@@ -71,6 +76,10 @@ Radio.propTypes = {
   onChange: PropTypes.func,
   /** Hook for automated JavaScript tests */
   testSection: PropTypes.string,
+};
+
+Radio.defaultProps = {
+  labelWeight: 'normal',
 };
 
 export default Radio;

@@ -24,7 +24,7 @@ class SelectDropdown extends React.Component {
      */
     items: PropTypes.arrayOf(PropTypes.shape({
       description: PropTypes.string,
-      label: PropTypes.string.isRequired,
+      label: PropTypes.node.isRequired,
       value: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
@@ -111,19 +111,20 @@ class SelectDropdown extends React.Component {
 
     return (
       <Dropdown
-        width={ width }
         { ...(zIndex ? { zIndex } : {}) }
         activator={ (
-          <Button
-            isDisabled={ this.props.isDisabled }
-            style={ buttonStyle }
-            testSection={ this.props.testSection }
-            width="full">
-            <div className="flex flex-align--center" data-track-id={ this.props.trackId }>
-              <span style={{overflow: 'hidden'}} className="flex flex--1">{ selectedItem.label }</span>
-              <span className="push--left oui-arrow-inline--down" />
-            </div>
-          </Button>
+          <div style={{ width: width}}>
+            <Button
+              isDisabled={ this.props.isDisabled }
+              style={ buttonStyle }
+              testSection={ this.props.testSection }
+              width="full">
+              <div className="flex flex-align--center" data-track-id={ this.props.trackId }>
+                <span style={{overflow: 'hidden'}} className="flex flex--1">{ selectedItem.label }</span>
+                <span className="push--left oui-arrow-inline--down" />
+              </div>
+            </Button>
+          </div>
         ) }>
         { this.renderContents() }
       </Dropdown>
@@ -146,7 +147,7 @@ class SelectOption extends React.Component {
     /**
      * Label of select item.
      */
-    label: PropTypes.string.isRequired,
+    label: PropTypes.node.isRequired,
     /**
      * Function that is called when user selects another item.
      */

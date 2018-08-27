@@ -88,6 +88,34 @@ describe('components/Checkbox', () => {
     expect(input.length).toBe(1);
   });
 
+  it('should add weight--normal class to label text when no labelWeight prop present', () => {
+    const component = mount(<Checkbox />);
+
+    const label = component.find('.weight--normal');
+    expect(label.length).toBe(1);
+  });
+
+  it('should add weight--normal class to label text when labelWeight prop = "normal"', () => {
+    const component = mount(<Checkbox labelWeight="normal" />);
+
+    const label = component.find('.weight--normal');
+    expect(label.length).toBe(1);
+  });
+
+  it('should add weight--light class to label text when labelWeight prop = "light"', () => {
+    const component = mount(<Checkbox labelWeight="light" />);
+
+    const label = component.find('.weight--light');
+    expect(label.length).toBe(1);
+  });
+
+  it('should add weight--bold class to label text when labelWeight prop = "bold"', () => {
+    const component = mount(<Checkbox labelWeight="bold" />);
+
+    const label = component.find('.weight--bold');
+    expect(label.length).toBe(1);
+  });
+
   it('should not add disabled attribute to checkbox when not disabled', () => {
     const component = mount(<Checkbox isDisabled={ false } />);
     expect(component.find('input').prop('disabled')).toBe(false);

@@ -20,7 +20,14 @@ class Item extends React.Component {
     let item;
     const commonClasses = 'oui-block-list__item';
 
-    if (this.props.onClick) {
+    if (this.props.isDisabled) {
+      item = (
+        <div
+          className={ `${commonClasses} pointer-events--none background--faint muted` }>
+          { this.props.children }
+        </div>
+      );
+    } else if (this.props.onClick) {
       // The element is rendered as a `div` instead of a `button` because the
       // user may want to pass in a `button` within `this.props.children`.
       // `tabIndex`, `role`, and `onKeyDown` are provided to make the `div`
@@ -74,6 +81,8 @@ Item.propTypes = {
   hrefTarget: PropTypes.oneOf(['_self', '_blank']),
   /** Sets the `title` attribute on an `href` */
   hrefTitle: PropTypes.string,
+  /** Disable the item */
+  isDisabled: PropTypes.bool,
   /** Function that is run when clicking on the item */
   onClick: PropTypes.func,
   /** Hook for automated JavaScript tests */

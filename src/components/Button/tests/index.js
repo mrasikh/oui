@@ -37,6 +37,18 @@ describe('components/Button', () => {
     expect(onBlurSpy).toHaveBeenCalled();
   });
 
+  it('should call function that is passed in as `onMouseDown` after mousedown', () => {
+    const onMouseDownSpy = jest.fn();
+
+    const component = shallow(
+      <Button onMouseDown={ onMouseDownSpy }>Hello!</Button>
+    );
+
+    component.simulate('mousedown');
+
+    expect(onMouseDownSpy).toHaveBeenCalled();
+  });
+
   it('should add an `aria-label` when provided', () => {
     const component = shallow(
       <Button ariaLabel="a11y">Hello!</Button>
