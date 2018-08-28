@@ -76,6 +76,7 @@ stories
     <Poptip
       trigger='mouseenter'
       delay={ 1000 }
+      hideDelay={ 5000 }
       content="Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!">
       <Button width="default">
         Default Poptip
