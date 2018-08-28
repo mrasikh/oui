@@ -1,7 +1,8 @@
 import React from 'react';
 import Poptip from '../index';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
+import { Tooltip } from 'react-tippy';
 
 describe('components/Poptip', () => {
   it('renders correctly', () => {
@@ -28,5 +29,14 @@ describe('components/Poptip', () => {
     component.props().setBodyDefined(true);
     component.find('button').simulate('mouseover');
     expect(mockCallBack.mock.calls.length).toEqual(1);
+  });
+
+  it('should pass the delay and hideDelay prop to Tooltip', () => {
+    const delay = 1000;
+    const hideDelay = 2000;
+    const component = mount(
+      <Poptip content="Really interesting info!" delay={ delay } hideDelay={ hideDelay }>Testing Poptip</Poptip>
+    );
+    expect(component.find(Tooltip).prop('delay')).toEqual([delay, hideDelay]);
   });
 });
