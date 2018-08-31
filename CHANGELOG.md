@@ -6,6 +6,7 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 - [Patch] Add mousedown handler to Button component
+- [Patch] Added delay and hideDelay prop for the poptip.
 
 ## 31.12.3 - 2018-08-24
 ### Changed
