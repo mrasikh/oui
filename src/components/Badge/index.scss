@@ -67,3 +67,8 @@
   background: transparent;
   color: map-fetch($color, ui, medium);
 }
+
+.#{$namespace}badge > li.badge__bad-news,
+.oui-badge--bad-news {
+  background: map-fetch($color, ui, bad-news);
+}

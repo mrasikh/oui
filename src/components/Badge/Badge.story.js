@@ -22,6 +22,7 @@ stories
     <Badge color="live">Live</Badge>
     <Badge color="primary">Primary</Badge>
     <Badge color="plain">Plain</Badge>
+    <Badge color="bad-news">Bad News</Badge>,
   </div>))
   .add('with text', withInfo()(() => (<div className="flex flex-align--center">
     <Badge color="draft">1</Badge>{ text('text', 'Unpublished Change') }

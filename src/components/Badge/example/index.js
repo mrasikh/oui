@@ -10,6 +10,7 @@ export default [
       <Badge color="live">Live</Badge>,
       <Badge color="primary">Primary</Badge>,
       <Badge color="plain">Plain</Badge>,
+      <Badge color="bad-news">Bad News</Badge>,
     ],
   },
   {
