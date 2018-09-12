@@ -77,4 +77,27 @@ describe('components/SelectDropdown', function() {
     activator.simulate('click');
     expect(component.find('DropdownContents').prop('minWidth')).toEqual('400px');
   });
+
+  it('should display activatorLabel if provided', function() {
+    const itemsWithActivatorLabel = [
+      {
+        activatorLabel: 'Production',
+        label: 'Production (50%)',
+        value: 'Production',
+      },
+      {
+        activatorLabel: 'Staging',
+        label: 'Staging (100%)',
+        value: 'Staging',
+      },
+    ];
+    component = mount(
+      <SelectDropdown
+        items={ itemsWithActivatorLabel }
+        value='Production'
+        onChange={ onChange }
+      />);
+    const activator = component.find('Button');
+    expect(activator.text()).toBe('Production');
+  });
 });

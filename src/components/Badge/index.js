@@ -27,7 +27,7 @@ Badge.propTypes = {
   /** Text that appears within the component */
   children: PropTypes.node.isRequired,
   /** Various color schemes */
-  color: PropTypes.oneOf(['default', 'draft', 'live', 'primary', 'plain']),
+  color: PropTypes.oneOf(['default', 'draft', 'live', 'primary', 'plain', 'bad-news']),
   /** Hook for automated JavaScript tests */
   testSection: PropTypes.string,
 };

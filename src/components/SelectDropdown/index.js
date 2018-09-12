@@ -23,6 +23,7 @@ class SelectDropdown extends React.Component {
      * Dropdown items that can be selected from the select dropdown.
      */
     items: PropTypes.arrayOf(PropTypes.shape({
+      activatorLabel: PropTypes.string,
       description: PropTypes.string,
       label: PropTypes.node.isRequired,
       value: PropTypes.oneOfType([
@@ -109,6 +110,8 @@ class SelectDropdown extends React.Component {
       }
     });
 
+    const activatorLabel = selectedItem.activatorLabel || selectedItem.label;
+
     return (
       <Dropdown
         { ...(zIndex ? { zIndex } : {}) }
@@ -120,7 +123,7 @@ class SelectDropdown extends React.Component {
               testSection={ this.props.testSection }
               width="full">
               <div className="flex flex-align--center" data-track-id={ this.props.trackId }>
-                <span style={{overflow: 'hidden'}} className="flex flex--1">{ selectedItem.label }</span>
+                <span style={{overflow: 'hidden'}} className="flex flex--1">{ activatorLabel }</span>
                 <span className="push--left oui-arrow-inline--down" />
               </div>
             </Button>

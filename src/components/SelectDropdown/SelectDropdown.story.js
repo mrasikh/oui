@@ -72,6 +72,28 @@ stories.add('default', withInfo()(() => {
       />
     </Container>
   );
+})).add('activatorLabel', withInfo()(() => {
+  const itemsWithActivatorLabel = [
+    {
+      activatorLabel: 'Production',
+      label: 'Production (50%)',
+      value: 'Production',
+    },
+    {
+      activatorLabel: 'Staging',
+      label: 'Staging (100%)',
+      value: 'Staging',
+    },
+  ];
+  return (
+    <Container>
+      <SelectDropdown
+        items={ itemsWithActivatorLabel }
+        value='Production'
+        onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
 }));
 
 const Container = styled.div`

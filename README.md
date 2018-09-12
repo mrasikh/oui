@@ -7,40 +7,31 @@
 
 ![Louis](https://raw.githubusercontent.com/optimizely/oui/devel/assets/louis.gif)
 
-Meet Louis, the official mascot of OUI.
-
-
-## Introduction
-
-This document contains four parts:
-
-1. [Documentation](#documentation)
-2. [Including OUI in your project](#including-oui-in-your-project)
-3. [Contributing to OUI](#contributing-to-oui)
-
-***
+_Meet Louis, the official mascot of OUI._
 
 ## Documentation
 
 - [Storybook](http://optimizely.github.io/oui/storybook/)
-- [Custom documentation](http://design.optimizely.com/docs/oui/)
-- [Archived SASS documentation](http://design.optimizely.com/docs/oui/9.0.0/)
+- [Internal documentation](http://design.optimizely.com/docs/oui/) (requires VPN access)
+- [Archived SASS documentation](http://design.optimizely.com/docs/oui/9.0.0/) (requires VPN access)
 
 ***
 
-## Including OUI in your project
+## Contribute to OUI
 
-OUI is published as an npm module called `optimizely-oui` that contains Sass files and React components.
+Run `git clone https://github.com/optimizely/oui.git && yarn install`.
 
-To install:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more information
+
+## Install OUI
+
+OUI is installed via npm; the `optimizely-oui` package contains Sass files and React components saved within your project's `node_modules/` folder.
 
 ```bash
 npm install optimizely-oui --save
 ```
 
-This will save it within your project's `node_modules/` folder.
-
-#### Using OUI Sass files
+#### Use OUI Sass
 
 OUI consists of two parts:
 
@@ -83,7 +74,7 @@ For example, if you're building a mobile site, your main SCSS file `mobile.scss`
 @import '../node_modules/optimizely-oui/src/overrides/sizing';
 ```
 
-#### Using OUI React components
+#### Use OUI React
 
 OUI comes with React components that can be used instead of copying and pasting HTML from the documentation. You can view these components locally by running `npm run docs:watch` after cloning the repository and installing dependencies with `npm install`.
 
@@ -94,32 +85,3 @@ import Button from 'optimizely-oui';
 ```
 
 [We provide React documentation](http://design.optimizely.com/docs/oui/) that includes information on our component props and default values.
-
-## React Components Dev Status:
-
-| Component| Status| Component | Status | Component | Status |           
-| ------------- |:-------------:| ------------- |:-------------:| ------------- |:-------------:| 
-| Accordion     | :white_large_square: | Array     | :white_large_square:     | ArrowInline | :white_check_mark:    |     
-| Attention | :white_check_mark:    | Badge | :white_check_mark:    | BlockList | :white_check_mark:    |         
-| BlockList/Category | :white_check_mark:    | BlockList/Item | :white_check_mark:    | Button | :white_check_mark:    |     
-| ButtonRow | :white_check_mark:    | Card | :white_check_mark:    | CheckBox | :white_check_mark:    |
-| Code | :white_check_mark:    |          |          |          |          |
-| Dialog | :white_large_square:   | Disclose | :white_check_mark:     | Dropdown | :white_check_mark:   |
-| Help | :white_large_square:    | Input | :white_check_mark:    | InputIcon | :white_large_square:   |  
-| Label | :white_check_mark:    | Media | :white_large_square:    | Nav | :white_large_square:    |   
-| OverlayWrapper | :white_check_mark:    | Pagination | :white_large_square:   | Popover | :white_check_mark:    |   
-| Poptip | :white_check_mark:    | ProgressBar | :white_check_mark:    | ProgressDots | :white_check_mark:     |   
-| Radio | :white_check_mark:    | Search | :white_large_square:     | Select | :white_check_mark:     |   
-| Spinner | :white_check_mark:     | Stats | :white_large_square:     | Steps | :white_large_square:     |   
-| Table | :white_check_mark:    | Tabel/TBody | :white_check_mark:    | Tabel/TD | :white_check_mark:    |   
-| Tabel/THead | :white_check_mark:    | Tabel/TR | :white_check_mark:    | TabNav | :white_check_mark:    |   
-| TabNav/Tab | :white_check_mark:    | Textarea | :white_check_mark:    | Token | :white_check_mark:    |
-| TextField | :white_check_mark:     |          |          |          |          |
-
-***
-
-## Contributing to OUI
-
-Want to run OUI locally? Clone this repository and run `npm install`. The `npm run` command will list all the available commands.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for more information
