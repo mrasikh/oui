@@ -5,12 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
-
+- [Patch] Added delay and hideDelay prop for the poptip.
 
 ## 31.12.4 - 2018-09-10
 ### Changed
 - [Patch] Add mousedown handler to Button component
-- [Patch] Added delay and hideDelay prop for the poptip.
 - [Patch] Add support for activatorLabel property in SelectDropdown item objects
 - [Patch] Add a new badge type for bad-news
 
