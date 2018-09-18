@@ -18,6 +18,7 @@ class Textarea extends React.Component {
   renderTextarea({
     defaultValue,
     displayError,
+    focus,
     isReadOnly,
     isRequired,
     isDisabled,
@@ -55,6 +56,7 @@ class Textarea extends React.Component {
         onBlur={ onBlur }
         onKeyDown={ onKeyDown }
         onFocus={ onFocus }
+        autoFocus={ focus }
         data-test-section={ testSection }
       />
       /* eslint-enable react/jsx-no-bind */
@@ -107,6 +109,8 @@ Textarea.propTypes = {
   defaultValue: PropTypes.string,
   /** Shows error styling if true */
   displayError: PropTypes.bool,
+  /** Auto focus the Textaraea if true */
+  focus: PropTypes.bool,
   /** Prevents textarea from being modified and appears disabled */
   isDisabled: PropTypes.bool,
   /** Adds an optional label if there is a label provided
@@ -157,6 +161,7 @@ Textarea.propTypes = {
 
 Textarea.defaultProps = {
   displayError: false,
+  focus: false,
   label: null,
   note: null,
   isOptional: false,
