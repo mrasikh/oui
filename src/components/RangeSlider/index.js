@@ -9,20 +9,20 @@ const RangeSlider = (props) => {
     isDisabled,
   } = props;
 
-  const rangeDisplayClasses = classnames({
-    'range-display': true,
-    'range-display--disabled': isDisabled,
+  const rangeClasses = classnames({
+    'oui-rangeslider': true,
+    'oui-rangeslider--disabled': isDisabled,
   });
 
   return (
-    <div className="oui-rangeslider" data-test-section={ props.testSection }>
+    <div className={ rangeClasses } data-test-section={ props.testSection }>
       <div className="oui-grid">
         <div className="oui-grid__cell position--relative">
-          <div className="flex">
+          <div className="range-labels flex">
             <label className="oui-label muted flush flex--1">0%</label>
             <label className="oui-label muted flush">100%</label>
           </div>
-          <div className={ rangeDisplayClasses }>
+          <div className="range-display">
             <div
               className="range-display range-display-overlay"
               style={{ left: value + '%' }}>

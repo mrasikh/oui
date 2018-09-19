@@ -148,7 +148,8 @@
   cursor: pointer;
 
   &:hover {
-    background: map-fetch($color, background, brand-light);
+    background: var(--light-blue-6);
+    color: var(--light-blue-75);
   }
 }
 

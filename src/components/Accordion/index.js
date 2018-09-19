@@ -19,7 +19,10 @@ export class Accordion extends React.Component {
   // inspired by React-Bootstrap Carousel
   render() {
     return (
-      <ul className="accordion accordion__react" data-test-section={ this.props.testSection }>
+      <ul
+        data-oui-component={ true }
+        className="accordion accordion__react"
+        data-test-section={ this.props.testSection }>
         {React.Children.map(this.props.children, (child, index) => {
           if (!isValidElement(child)) {
             return null;

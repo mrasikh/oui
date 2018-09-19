@@ -12,7 +12,8 @@
 
 %#{$namespace}rule,
 .#{$namespace}rule,
-.oui-rule {
+.oui-rule,
+hr {
   border: 0;
   height: 0;
   border-top: 1px solid map-fetch($border, color, base);

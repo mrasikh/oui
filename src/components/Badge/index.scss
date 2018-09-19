@@ -15,7 +15,7 @@
 
 @mixin badge {
   height: map-fetch($badge, size);
-  line-height: map-fetch($badge, size);
+  line-height: map-fetch($font, size, base);
   background: map-fetch($badge, background-color);
   color: map-fetch($color, ui, white);
   min-width: map-fetch($badge, min-width);
@@ -23,7 +23,7 @@
   margin-right: spacer(0.5);
   border-radius: map-fetch($badge, size);
   font-size: map-fetch($badge, font-size);
-  padding: 0 spacer(0.5);
+  padding: 2px spacer(1) !important; // TODO(dave) HTML FIX: remove .soft-half--sides from .badge__draft
   font-weight: map-fetch($badge, font-weight);
   letter-spacing: map-fetch($badge, letter-spacing);
   text-transform: uppercase;
@@ -44,6 +44,7 @@
 }
 
 .oui-badge {
+  display: inline-block;
   @include badge;
 }
 
@@ -65,7 +66,7 @@
 .#{$namespace}badge > li.badge__plain,
 .oui-badge--plain {
   background: transparent;
-  color: map-fetch($color, ui, medium);
+  color: map-fetch($badge, background-color);
 }
 
 .#{$namespace}badge > li.badge__bad-news,

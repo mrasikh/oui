@@ -7,6 +7,41 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 ## Unreleased
 - [Patch] Added auto-focus to the Textarea
 
+##40.0.0 - 2018-09-18
+- [Release] (Breaking changes) Optimizely rebrand with new logo, colors, spacing, rounded corners.
+
+### CSS
+- Badge, Blocklist, Switch, RangeSlider, TabNav, Link (colors, spacing)
+- Table headers `<th>` font-weight medium (no longer bold)
+- Arrow-inline (replace Classic triangle with thinner v-shaped arrow from X; Reduce stroke weight to 1px)
+- Buttons (all sizes/styles updated, no shadows)
+- Button-group only gets outer border radius
+- Dropdown (border radius, padded contents)
+- Disclose (new arrow style)
+- Auto align `input[number]`
+- Label no longer bold weight
+- Link colors updated to `--light-blue-75`
+- `<b>/<strong>` and `weight--bold` now a medium font weight instead of true bold
+- `<hr>` included in .oui-rule as a default (hat-tip @zleach)
+
+### React
+- Overview story
+- Editable input has `cursor--pointer`
+- EmptyDashboard colored images (short-term fix)
+- RangeSlider set disabled state properly
+
+### Colors
+- Fewer shadows, borders
+- Updated colors (brand light and dark, good/bad news, admin, grays)
+- SASS color variables updated; Added CSS3 variables (Using a mix of CSS3 variables and SASS color variables depending on needs since you can't tint/shade CSS3 vars)
+- New tint/shade color mixins (for SASS hex colors)
+
+### Typography
+- Added two new typefaces: Graphik (default body font) and Lato (used for Results page/tabular numbers and as a fallback for Graphik)
+- Host typefaces on S3 bucket tied to CloudFront CDN endpoint
+- Reset.css updated to include font-smoothing and text-rendering that changes anti-aliasing defaults (styles moved from X)
+- Add .number-display helper for numbers (Lato font utility class)
+- Add typography SASS partial (h1-h6, .alpha-.zeta, .milli, .micro, etc)
 
 ## 31.12.4 - 2018-09-10
 ### Changed

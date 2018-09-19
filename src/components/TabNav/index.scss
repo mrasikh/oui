@@ -5,7 +5,7 @@
 .#{$namespace}tabs-nav,
 .oui-tabs-nav {
   display: flex;
-  border-bottom: 3px solid map-fetch($color, ui, base);
+  border-bottom: 1px solid map-fetch($color, ui, light);
 
   &__item {
     position: relative;
@@ -14,10 +14,14 @@
     border: 1px solid map-fetch($border, color, base);
     border-right: 0;
     border-bottom: 0;
-    color: map-fetch($color, text, medium);
+    color: var(--dark-blue-75);
     font-weight: 400;
     background-color: map-fetch($color, background, faint);
     cursor: pointer;
+
+    &.link--muted {
+      color: inherit;
+    }
 
     &:first-child {
       border-top-left-radius: map-fetch($border, radius, big);
@@ -28,9 +32,8 @@
       border-right: 1px solid map-fetch($border, color, base);
     }
 
-    &:hover,
-    &.is-active {
-      color: map-fetch($color, text, brand);
+    &:hover {
+      color: var(--light-blue-75);
     }
 
     &.is-active {
@@ -41,7 +44,7 @@
         content: '';
         display: block;
         height: 3px;
-        background: map-fetch($color, background, white);
+        background: var(--light-blue-75);
         position: absolute;
         left: 0;
         right: 0;
@@ -78,8 +81,7 @@
   .oui-tabs-nav__item {
     background-color: transparent;
     padding: spacer(0.5) spacer(1);
-    // font-size: map-fetch($font, size, milli);
-    font-size: 11.5px; // [TODO] @dave.rau Adding these overrides for Ron
+    font-size: 11.5px; // TODO: @dave.rau Adding these overrides for Ron
     letter-spacing: -0.3px;
     &.is-active {
       &::after { // Creates the white bar under the active tab.
@@ -111,7 +113,6 @@
 
     &.is-active::after {
       height: 2px;
-      background: map-fetch($color, background, brand);
       bottom: -1px;
     }
 
@@ -127,9 +128,8 @@
   .oui-tabs-nav__item {
 
     &.is-active::after {
-      height: 3px;
-      background: map-fetch($color, background, brand);
-      bottom: -3px;
+      height: 1px;
+      bottom: -1px;
     }
 
     &.tab-disabled {
@@ -151,6 +151,7 @@
   }
 }
 
+.dashboard-tabs,
 .oui-tabs--dashboard {
   margin-left: -(spacer(4));
   margin-right: -(spacer(4));
@@ -162,17 +163,9 @@
 
   .#{$namespace}tabs-nav__item,
   .oui-tabs-nav__item {
-    padding-top: 0;
+    padding-top: 8px;
     border: none;
     background: none;
-
-    &.is-active {
-      color: #555;
-
-      &:after {
-        background: #0081BA;
-      }
-    }
 
     &:first-child {
       margin-left: spacer(2.5);

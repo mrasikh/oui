@@ -18,19 +18,13 @@ stories
 stories
   .add('default', withInfo()(() => (<div>
     <Token
-      name="Duck"
-      style="secondary"
-      testSection="token-test"
-    />
-    <Token
-      name="Duck"
-      style="primary"
-    />
-    <Token
       isDismissible={ true }
-      name="Goose"
+      name="Hello"
       style="primary"
-      testSection="goose"
+    />
+    <Token
+      name="World"
+      style="secondary"
     />
   </div>)))
   .add('draggable', () => {

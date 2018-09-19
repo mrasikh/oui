@@ -12,7 +12,7 @@ exports[`components/RangeSlider should render component same as snapshot 1`] = `
       className="oui-grid__cell position--relative"
     >
       <div
-        className="flex"
+        className="range-labels flex"
       >
         <label
           className="oui-label muted flush flex--1"

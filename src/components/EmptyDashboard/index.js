@@ -29,7 +29,7 @@ const EmptyDashboard = ({
               <object
                 data={ imagePath }
                 className="svg--non-scaling-stroke display--inline"
-                style={{ maxWidth: '450px', maxHeight: '290px' }}
+                style={{ maxWidth: '450px', maxHeight: '290px', 'filter': 'hue-rotate(33deg) saturate(130%)' }}
                 data-test-section={ testSection && `${testSection}-image` }
                 alt=""
               />

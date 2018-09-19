@@ -19,7 +19,15 @@
 // General resets.
 
 body {
+  @include font-smoothing;
   margin: 0;
+  color: map-fetch($color, text, base);
+
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-feature-settings: "kern";
+  font-kerning: normal; /* TODO: Test normal vs auto */
 }
 
 h1,
@@ -166,7 +174,7 @@ em {
 
 b,
 strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /// Forms
@@ -261,8 +269,8 @@ input[type="submit"] {
 
 // Keep number inputs consistent for alignment/proximity to `%` symbol
 // https://css-tricks.com/snippets/css/turn-off-number-input-spinners/
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
