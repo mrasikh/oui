@@ -49,5 +49,14 @@ stories
         placeholder="Just a placeholder"
         type="text"
       />);
+  }).add('Textarea with auto focus', () => {
+    return (
+      <Textarea
+        label="Field label"
+        focus={ true }
+        note="A short description or note about this field."
+        placeholder="Just a placeholder"
+        type="text"
+      />);
   });
 
