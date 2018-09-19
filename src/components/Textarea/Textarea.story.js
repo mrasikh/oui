@@ -49,7 +49,7 @@ stories
         placeholder="Just a placeholder"
         type="text"
       />);
-  }).add('Textarea with auto focus', () => {
+  }).add('Textarea with auto focus', withInfo()(() => {
     return (
       <Textarea
         label="Field label"
@@ -58,5 +58,5 @@ stories
         placeholder="Just a placeholder"
         type="text"
       />);
-  });
+  }));
 

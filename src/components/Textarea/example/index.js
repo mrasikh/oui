@@ -34,4 +34,12 @@ export default [
     /* eslint-enable no-console */
     ],
   },
+  {
+    examples: [
+      <Textarea
+        focus={ true }
+        placeholder="This text area is auto focused."
+      />,
+    ],
+  },
 ];
