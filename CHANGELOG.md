@@ -7,6 +7,7 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 ## Unreleased
 - [Patch] Added delay and hideDelay prop for the poptip
 - [Patch] Add isInline prop to Poptip component
+- [Patch] Remove package-lock.json since yarn is our offical npm package tool
 
 ## 40.3.0 - 2018-09-26
 - [Feature] Add isDisabled prop to Switch component
