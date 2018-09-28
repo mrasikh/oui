@@ -30,7 +30,7 @@
   margin-left: 0;
 
   > li {
-    padding: spacer(0.5) spacer(1);
+    padding: spacer(0.5);
     border-top: 1px solid map-fetch($color, ui, light);
   }
 
@@ -39,24 +39,18 @@
   &__link {
     display: block;
     cursor: pointer;
-    padding: spacer(0.5) spacer(1);
-    margin-left: -(spacer(1));
-    margin-right: -(spacer(1));
+    padding: spacer(0.5) spacer(1.5);
+    margin-left: -(spacer(0.5));
+    margin-right: -(spacer(0.5));
+    border-radius: var(--border-radius);
 
     &:hover {
-      background-color: map-fetch($color, background, brand-light);
+      color: var(--light-blue-75);
+      background-color: var(--light-blue-6);
     }
 
     &--active {
       background-color: map-fetch($color, background, faint);
-    }
-
-    &:first-child {
-      margin-top: -(spacer(0.5));
-    }
-
-    &:last-child {
-      margin-bottom: -(spacer(0.5));
     }
   }
 
@@ -95,22 +89,42 @@
 }
 
 .oui-block-list__item {
-  padding: spacer(0.5) spacer(1);
+  padding: spacer(0.5) spacer(1.5);
 }
 
 .oui-block-list__link:hover,
 .oui-block-list__link:focus {
-  background-color: map-fetch($color, background, brand-light);
+  background-color: var(--light-blue-6);
   outline: none;
 }
 
 %#{$namespace}block-list-group,
 .#{$namespace}block-list-group {
   @extend %#{$namespace}block-list;
+  padding: 0;
+
   border: 1px solid map-fetch($border, color, base);
   border-radius: map-fetch($border, radius, base);
 
   > li:first-child {
     border: 0;
   }
+}
+
+
+// TODO CSS FIX: update pattern
+.#{$namespace}dropdown__item .#{$namespace}dropdown__block-link {
+  margin: 0 !important;
+}
+
+.oui-dropdown-children .oui-dropdown__block-link {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.oui-dropdown-children .oui-block-list__category ul {
+  padding: spacer(0.5);
+}
+.oui-dropdown-children, .oui-dropdown-children .oui-block-list__link {
+  border-radius: var(--border-radius);
 }

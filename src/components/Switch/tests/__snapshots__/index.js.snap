@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/Toggle should render an \`Toggle\` with correct props 1`] = `
+exports[`components/Switch should render an \`Switch\` with correct props 1`] = `
 <div
   className="position--relative"
   data-oui-component={true}

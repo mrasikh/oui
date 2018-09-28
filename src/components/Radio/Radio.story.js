@@ -25,6 +25,21 @@ stories
       />
     );
   }))
+  .add('with html label', withInfo()(() => {
+    return (
+      <Radio
+        testSection={ text('testSection', 'test-radio') }
+        name={ text('name', 'this is a radio') }
+        label={
+          <div>
+            <strong>Label</strong>
+            <br />
+            <span>Description text</span>
+          </div>
+        }
+      />
+    );
+  }))
   .add('with labelWeight prop', withInfo()(() => {
     return (
       <Radio

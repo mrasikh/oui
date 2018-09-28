@@ -58,7 +58,7 @@ class EditableInput extends Component {
             : (
               <div
                 data-test-section={ testSection }
-                className='editable soft-half'
+                className='cursor--pointer editable soft-half'
                 onClick={ this.focus }>
                 { value }
               </div>

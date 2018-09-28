@@ -2,15 +2,6 @@
 /// Card styles
 ////
 
-// .shadow {
-//   background: map-fetch($color, background, white);
-//   border: 1px solid map-fetch($color, ui, base);
-//   border-radius: map-fetch($border, radius, base);
-//   box-shadow: 0 1px map-fetch($shadow, light);
-//   padding: spacer(2);
-//   margin-bottom: spacer(1);
-// }
-
 .oui-shadow {
   $box-shadow-offset: 1px;
   box-shadow: 0 $box-shadow-offset map-fetch($shadow, base);

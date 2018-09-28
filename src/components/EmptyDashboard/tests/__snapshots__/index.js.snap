@@ -59,6 +59,7 @@ exports[`components/EmptyDashboard should render 1`] = `
             data="https://app.optimizely.com/static/img/p13n/campaign-list-empty-state.svg"
             style={
               Object {
+                "filter": "hue-rotate(33deg) saturate(130%)",
                 "maxHeight": "290px",
                 "maxWidth": "450px",
               }

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, number } from '@storybook/addon-knobs';
+import { withInfo } from '@storybook/addon-info';
 
 import ProgressBar from '../ProgressBar';
 
@@ -15,7 +16,7 @@ stories
   ));
 
 stories
-  .add('states of pb', () => {
+  .add('states of pb', withInfo()(() => {
     return (
       <ProgressBar
         max={ number('max', 100) }
@@ -25,5 +26,4 @@ stories
         leftLabel={ text('leftLabel', 'Allocated traffic') }
         rightLabel={ text('rightLabel', 'Available traffic') }
       />);
-  });
-
+  }));

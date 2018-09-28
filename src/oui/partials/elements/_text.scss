@@ -39,3 +39,10 @@
 [data-lego-pseudo-content]::before {
   content: attr(data-lego-pseudo-content);
 }
+
+/// Number font
+// @description Used on results page and for certain types of tabular data.
+
+.number-display {
+  font-family: map-fetch($font, family, number);
+}

@@ -22,6 +22,7 @@ setOptions({
 const req = require.context('../src/', true, /story\.js$/);
 
 function loadStories() {
+  require('./overview.story.js');
   req.keys().forEach(req)
 }
 

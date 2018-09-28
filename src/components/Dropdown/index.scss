@@ -112,7 +112,6 @@
   $box-shadow-offset: 2px;
   @extend %#{$namespace}block-list-group;
   background: map-fetch($color, background, white);
-  box-shadow: 0 $box-shadow-offset map-fetch($shadow, light);
   min-width: 100%;
   position: absolute;
   top: 100%;
@@ -125,17 +124,22 @@
   font-weight: 400;
   overflow-y: auto;
   display: none;
+  border: 0;
+  box-shadow: var(--wide-shadow);
+  border-radius: var(--border-radius);
 
   &__item {
     color: map-fetch($color, text, base);
+    padding: spacer(.5) spacer(1);
+
+    & > div.muted,
+    & > div.micro {
+      padding: spacer(0.5) spacer(1.5);
+    }
 
     &--active {
       background: map-fetch($color, background, faint);
     }
-  }
-
-  &__block-link {
-    @extend %#{$namespace}block-list__link;
   }
 
   &--right {
@@ -145,7 +149,7 @@
 
   &--descriptive {
     &__header {
-      color: map-fetch($color, text, brand);
+      color: var(--dark-blue-100);
     }
 
     &__content {
@@ -156,9 +160,26 @@
     }
   }
 
+  &__block-link {
+    @extend %#{$namespace}block-list__link;
+
+    &:hover {
+      .#{$namespace}dropdown--descriptive__header,
+      .oui-dropdown--descriptive__header,
+      .#{$namespace}dropdown--descriptive__content,
+      .oui-dropdown--descriptive__content {
+        color: var(--light-blue-75);
+      }
+    }
+  }
+
   &--up {
     bottom: 100%;
-    box-shadow: 0 (-$box-shadow-offset) map-fetch($shadow, light);
     top: initial;
   }
+
+}
+
+.oui-dropdown-children > div {
+  border-radius: var(--border-radius);
 }

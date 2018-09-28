@@ -38,11 +38,11 @@
     }
 
     &:first-child {
-      border-radius: map-fetch($border, radius, base) 0 0 map-fetch($border, radius, base);
+      border-radius: map-fetch($border, radius, big) 0 0 map-fetch($border, radius, big);
     }
 
     &:last-child {
-      border-radius: 0 map-fetch($border, radius, base) map-fetch($border, radius, base) 0;
+      border-radius: 0 map-fetch($border, radius, big) map-fetch($border, radius, big) 0;
     }
   }
 

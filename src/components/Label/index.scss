@@ -44,7 +44,7 @@
 .oui-label {
   display: block;
   margin-bottom: spacer(0.5);
-  font-weight: 500;
+  font-weight: 400;
 
   // Fun fact: We used to implement the “(Optional)” text with an `::after`,
   // but had to change that because `content: '(Optional)';` couldn't be

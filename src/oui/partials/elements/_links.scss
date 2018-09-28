@@ -21,7 +21,7 @@ a,
   }
 
   &:hover {
-    color: lighten(map-fetch($color, link, base), 10%);
+    color: map-fetch($color, link, hover);
   }
 }
 

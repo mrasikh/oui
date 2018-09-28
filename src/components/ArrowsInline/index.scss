@@ -9,45 +9,45 @@
 ///   <div><span class="oui-arrow-inline--left"></span> Left</div>
 ////
 
-$border-colored: 4px solid currentColor;
-$border-transparent: 4px solid transparent;
-
 %#{$namespace}arrow-inline,
 %oui-arrow-inline,
 .#{$namespace}arrow-inline,
 .oui-arrow-inline {
   display: inline-block;
-  width: 0;
-  height: 0;
-  margin-top: -2px;
-  margin-left: 2px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+  border-top: none;
+  border-right: none;
   vertical-align: middle;
+  margin-top: -4px;
+  margin-left: 3px;
 
   &--up {
     @extend %oui-arrow-inline;
-    border-bottom: $border-colored;
-    border-right: $border-transparent;
-    border-left: $border-transparent;
+    transform: rotate(135deg);
+    vertical-align: -2%;
   }
 
   &--down {
     @extend %oui-arrow-inline;
-    border-top: $border-colored;
-    border-right: $border-transparent;
-    border-left: $border-transparent;
+    transform: rotate(-45deg);
+    vertical-align: 6%;
   }
 
   &--right {
     @extend %oui-arrow-inline;
-    border-left: $border-colored;
-    border-top: $border-transparent;
-    border-bottom: $border-transparent;
+    transform: rotate(-135deg);
   }
 
   &--left {
     @extend %oui-arrow-inline;
-    border-right: $border-colored;
-    border-top: $border-transparent;
-    border-bottom: $border-transparent;
+    transform: rotate(45deg);
+  }
+
+  &--small {
+    width: 6px;
+    height: 6px;
+    vertical-align: 20%;
   }
 }

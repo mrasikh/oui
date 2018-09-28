@@ -25,6 +25,11 @@
   @include text-input;
 }
 
+.#{$namespace}text-input[type="number"],
+.oui-text-input[type="number"] {
+  text-align: right;
+}
+
 .#{$namespace}text-input--small,
 .oui-text-input--small {
   @include text-input--small;

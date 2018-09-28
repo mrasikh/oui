@@ -30,19 +30,19 @@
 /// </div>
 
 .oui-rangeslider {
-  input[type=range] {
+  input[type="range"] {
     -webkit-appearance: none;
     height: 50px;
     background: transparent;
   }
-  input[type=range]:focus {
+  input[type="range"]:focus {
     outline: none;
   }
-  input[type=range]::-webkit-slider-runnable-track {
+  input[type="range"]::-webkit-slider-runnable-track {
     position: relative;
     top: 16px;
   }
-  input[type=range]::-webkit-slider-thumb {
+  input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: 4px solid white;
     cursor: pointer;
@@ -55,20 +55,25 @@
     box-shadow: 0 0 4px rgba(110, 110, 110, 0.8), 0 0 2px rgba(0, 0, 0, 0.3);
     border-radius: 50%;
   }
-  input[type=range]:focus::-webkit-slider-thumb {
+  input[type="range"]:focus::-webkit-slider-thumb {
     box-shadow: 0 0 8px rgba(0, 116, 180,.9);
   }
   .range-display {
     height: 35px;
-    background-image: url('data:image/svg+xml;utf-8,<svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path fill="'+map-fetch($color, ui, good-news)+'" d="M0 256h256V0z"/></svg>');
+    background-image: url('data:image/svg+xml;utf-8,<svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path fill="'+map-fetch($rangeslider, background-color)+'" d="M0 256h256V0z"/></svg>');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
     left: 12px;
     right: 11px;
   }
-  .range-display--disabled{
-    filter: grayscale(1) opacity(0.3);
+  &.oui-rangeslider--disabled {
+    .range-display {
+      filter: grayscale(1) opacity(0.3);
+    }
+    .range-grid .gridline, .range-labels {
+      opacity: 0.5;
+    }
   }
   .range-display.range-display-overlay {
     background-color: white;

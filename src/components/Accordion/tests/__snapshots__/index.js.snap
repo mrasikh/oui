@@ -3,6 +3,7 @@
 exports[`components/Accordion should render a \`ul\` HTML element with the right classes 1`] = `
 <ul
   className="accordion accordion__react"
+  data-oui-component={true}
 >
   <AccordionSection
     _isSelected={true}

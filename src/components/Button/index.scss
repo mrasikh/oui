@@ -49,7 +49,7 @@
 
   &:hover {
     color: map-fetch($button, type, base, color);
-    box-shadow: map-fetch($button, type, base, hover, box-shadow);
+    background-color: $base-white;
   }
 
   &:focus {
@@ -75,6 +75,10 @@
     &:hover {
       background: map-fetch($button, type, highlight, hover, background);
       border-color: map-fetch($button, type, highlight, hover, border);
+    }
+
+    &:focus {
+      border: 1px solid var(--light-blue-100);
     }
 
     &:active {
@@ -104,6 +108,10 @@
       border-color: map-fetch($button, type, outline, hover, border);
     }
 
+    &:focus {
+      border: 1px solid var(--light-blue-100);
+    }
+
     &:hover {
       background-color: map-fetch($button, type, outline, background);
       border-color: map-fetch($button, type, outline, hover, border);
@@ -116,28 +124,6 @@
       border-color: map-fetch($button, type, outline, active, border);
       color: map-fetch($button, type, outline, active, color);
       box-shadow: none;
-    }
-  }
-
-  &--outline-reverse {
-    background-color: map-fetch($button, type, outline-reverse, background);
-    border-color: map-fetch($button, type, outline-reverse, border);
-    color: map-fetch($button, type, outline-reverse, color);
-
-    &:visited {
-      color: map-fetch($button, type, outline-reverse, color);
-    }
-
-    &:hover {
-      background: map-fetch($button, type, outline-reverse, hover, background);
-      border-color: map-fetch($button, type, outline-reverse, hover, border);
-      color: map-fetch($button, type, outline-reverse, hover, color);
-    }
-
-    &:active {
-      background: map-fetch($button, type, outline-reverse, active, background);
-      border-color: map-fetch($button, type, outline-reverse, active, border);
-      color: map-fetch($button, type, outline-reverse, active, color);
     }
   }
 
@@ -156,6 +142,10 @@
       border-color: map-fetch($button, type, danger, active, border);
     }
 
+    &:focus {
+      border: 1px solid shade(map-fetch($button, type, danger, background), 30%);
+    }
+
     &:visited,
     &:hover,
     &:active,
@@ -171,7 +161,7 @@
     box-shadow: none;
 
     &:focus {
-      border-color: map-fetch($button, type, danger-outline, hover, border);
+      border: 1px solid shade(map-fetch($button, type, danger, background), 30%);
     }
 
     &:hover {
@@ -187,7 +177,6 @@
       color: map-fetch($button, type, danger-outline, active, color);
       box-shadow: none;
     }
-
   }
 
   &--plain,
@@ -215,9 +204,13 @@
     }
   }
 
+  &--underline {
+    border-radius: 0 !important;
+  }
+
   &--plain {
     &:focus {
-      border-color: map-fetch($button, type, outline, hover, border);
+      border: 1px solid var(--light-blue-25);
     }
   }
 
@@ -262,7 +255,6 @@
   }
 
   // Button Sizes
-  // Button size, variations.
 
   &--tiny {
     font-size: map-fetch($button, size, tiny, font-size);

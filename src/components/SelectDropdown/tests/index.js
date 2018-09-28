@@ -65,6 +65,17 @@ describe('components/SelectDropdown', function() {
     });
   });
 
+  it('should contain error class', function() {
+    component = mount(
+      <SelectDropdown
+        items={ items }
+        value={ 'value 2' }
+        onChange={ onChange }
+        displayError={ true }
+      />);
+    expect(component.find('.oui-form-bad-news').length).toBe(1);
+  });
+
   it('should set the width of the content', function() {
     component = mount(
       <SelectDropdown

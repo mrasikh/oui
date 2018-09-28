@@ -7,6 +7,59 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 ## Unreleased
 - [Patch] Added delay and hideDelay prop for the poptip.
 
+## 40.3.0 - 2018-09-26
+- [Feature] Add isDisabled prop to Switch component
+
+## 40.2.0 - 2018-09-20
+- [Patch] Updated color palette to reflect latest design team changes
+- [Feature] Added SASS loop to auto-generate CSS3 --var colors from $brand-color base color set
+- [Patch] Minor change to background colors for DiscloseTable
+- [Patch] Allow node type for Radio label prop
+
+## 40.1.0 - 2018-09-19
+- [Feature] Add Steps component
+- [Patch] Add displayError prop to SelectDropdown component
+- [Patch] Minor change to badge line-height to better work with Graphik.
+
+## 40.0.1 - 2018-09-19
+- Accidental release
+
+## 40.0.0 - 2018-09-18
+- [Release] (Breaking changes) Optimizely rebrand with new logo, colors, spacing, rounded corners.
+
+### CSS
+- Badge, Blocklist, Switch, RangeSlider, TabNav, Link (colors, spacing)
+- Table headers `<th>` font-weight medium (no longer bold)
+- Arrow-inline (replace Classic triangle with thinner v-shaped arrow from X; Reduce stroke weight to 1px)
+- Buttons (all sizes/styles updated, no shadows)
+- Button-group only gets outer border radius
+- Dropdown (border radius, padded contents)
+- Disclose (new arrow style)
+- Auto align `input[number]`
+- Label no longer bold weight
+- Link colors updated to `--light-blue-75`
+- `<b>/<strong>` and `weight--bold` now a medium font weight instead of true bold
+- `<hr>` included in .oui-rule as a default (hat-tip @zleach)
+
+### React
+- Overview story
+- Editable input has `cursor--pointer`
+- EmptyDashboard colored images (short-term fix)
+- RangeSlider set disabled state properly
+
+### Colors
+- Fewer shadows, borders
+- Updated colors (brand light and dark, good/bad news, admin, grays)
+- SASS color variables updated; Added CSS3 variables (Using a mix of CSS3 variables and SASS color variables depending on needs since you can't tint/shade CSS3 vars)
+- New tint/shade color mixins (for SASS hex colors)
+
+### Typography
+- Added two new typefaces: Graphik (default body font) and Lato (used for Results page/tabular numbers and as a fallback for Graphik)
+- Host typefaces on S3 bucket tied to CloudFront CDN endpoint
+- Reset.css updated to include font-smoothing and text-rendering that changes anti-aliasing defaults (styles moved from X)
+- Add .number-display helper for numbers (Lato font utility class)
+- Add typography SASS partial (h1-h6, .alpha-.zeta, .milli, .micro, etc)
+
 ## 31.12.4 - 2018-09-10
 ### Changed
 - [Patch] Add mousedown handler to Button component
