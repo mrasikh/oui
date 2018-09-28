@@ -33,14 +33,14 @@
       border-right: 1px solid transparent;
 
       &:hover {
-        background-color: map-fetch($color, background, brand-light);
         cursor: pointer;
+        background-color: map-fetch($brand-color, light-blue-6);
       }
 
       &.is-active {
         @extend %border--sides;
         @extend %border--top;
-        background-color: map-fetch($color, background, faint);
+        background-color: map-fetch($root-color, grey-03);
       }
     }
 

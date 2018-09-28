@@ -59,6 +59,11 @@
   transition: all 0.1s ease-in-out;
 }
 
+.oui-switch--disabled + label {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* Slider */
 .oui-switch + label:after {
   content: '';

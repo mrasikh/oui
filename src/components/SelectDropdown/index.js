@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
 import Button from '../Button';
 import Dropdown from '../Dropdown';
-
 
 class SelectDropdown extends React.Component {
   static propTypes = {
@@ -11,6 +11,10 @@ class SelectDropdown extends React.Component {
      * Style value that is passed to the OUI button that controls the dropdown.
      */
     buttonStyle: PropTypes.string,
+    /**
+     * Show error by default.
+     */
+    displayError: false,
     /**
      * Dropdown direction.
      */
@@ -110,13 +114,19 @@ class SelectDropdown extends React.Component {
       }
     });
 
+    const outerClass = classNames(
+      {['oui-form-bad-news']: this.props.displayError}
+    );
+
     const activatorLabel = selectedItem.activatorLabel || selectedItem.label;
 
     return (
       <Dropdown
         { ...(zIndex ? { zIndex } : {}) }
         activator={ (
-          <div style={{ width: width}}>
+          <div
+            style={{ width: width}}
+            className={ outerClass }>
             <Button
               isDisabled={ this.props.isDisabled }
               style={ buttonStyle }
@@ -195,4 +205,3 @@ SelectOption.defaultProps = {
 };
 
 export default SelectDropdown;
-

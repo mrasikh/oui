@@ -16,10 +16,18 @@ stories
     </div>
   ));
 
-stories.add('default', withInfo()(() => {
+stories.add('Default', withInfo()(() => {
   return <Switch onClick={ action('clicked the switch') }/>;
 }));
 
-stories.add('off', withInfo()(() => {
+stories.add('Off', withInfo()(() => {
   return <Switch checked={ false } onClick={ action('clicked the switch') }/>;
+}));
+
+stories.add('On', withInfo()(() => {
+  return <Switch checked={ true } onClick={ action('clicked the switch') }/>;
+}));
+
+stories.add('Disabled', withInfo()(() => {
+  return <Switch isDisabled={ true } onClick={ action('Cannot click') }/>;
 }));

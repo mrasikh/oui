@@ -15,7 +15,7 @@
 
 @mixin badge {
   height: map-fetch($badge, size);
-  line-height: map-fetch($font, size, base);
+  line-height: 13px;
   background: map-fetch($badge, background-color);
   color: map-fetch($color, ui, white);
   min-width: map-fetch($badge, min-width);

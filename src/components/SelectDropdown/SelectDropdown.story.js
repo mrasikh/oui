@@ -61,6 +61,17 @@ stories.add('default', withInfo()(() => {
       />
     </Container>
   );
+})).add('has error', withInfo()(() => {
+  return (
+    <Container>
+      <SelectDropdown
+        items={ items }
+        displayError={ true }
+        value={ 'bear' }
+        onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
 })).add('width of dropdown', withInfo()(() => {
   return (
     <Container>

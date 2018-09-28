@@ -23,8 +23,11 @@
 ///   </ul>
 ////
 
+$hover-color: lighten(map-fetch($color, link, base), 10%);
+
 %#{$namespace}steps,
-.#{$namespace}steps {
+.#{$namespace}steps,
+.oui-steps {
   display: flex;
   justify-content: center;
   margin-left: auto;
@@ -70,12 +73,27 @@
         background: map-fetch($color, ui, brand);
       }
 
-      .#{$namespace}steps__dot {
+      &:hover.oui-steps__item--editable {
+        .#{$namespace}steps__dot,
+        .oui-steps__dot {
+          background: $hover-color;
+          border-color: $hover-color;
+        }
+
+        .#{$namespace}steps__label,
+        .oui-steps__label {
+          color: $hover-color;
+        }
+      }
+
+      .#{$namespace}steps__dot,
+      .oui-steps__dot {
         background: map-fetch($color, ui, brand);
         border-color: map-fetch($color, ui, brand);
       }
 
-      .#{$namespace}steps__label {
+      .#{$namespace}steps__label,
+      .oui-steps__label {
         color: map-fetch($color, text, brand);
       }
     }
@@ -86,8 +104,25 @@
         background: map-fetch($color, ui, brand);
       }
 
-      .#{$namespace}steps__dot {
+      .#{$namespace}steps__dot,
+      .oui-steps__dot {
         border-color: map-fetch($color, ui, brand);
+      }
+    }
+
+    &--editable {
+      &:hover {
+        cursor: pointer;
+
+        .#{$namespace}steps__dot,
+        .oui-steps__dot {
+          border-color: $hover-color;
+        }
+        
+        .#{$namespace}steps__label,
+        .oui-steps__label {
+          color: $hover-color;
+        }
       }
     }
 

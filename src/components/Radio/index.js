@@ -64,7 +64,10 @@ Radio.propTypes = {
   /** Prevents radio input from being modified and appears disabled */
   isDisabled: PropTypes.bool,
   /** Text that describes the radio input */
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   /** Font weight for the label text */
   labelWeight: PropTypes.oneOf(['light', 'normal', 'bold']),
   /**

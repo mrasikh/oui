@@ -72,6 +72,18 @@ stories
          <h6>H6 Experiments</h6>
       </div>
 
+      <div class="oui--swatches push--ends">
+         <span className="width--50 height--50 display--inline-block background--red"></span>
+         <span className="width--50 height--50 display--inline-block background--gold"></span>
+         <span className="width--50 height--50 display--inline-block background--indigo"></span>
+         <span className="width--50 height--50 display--inline-block background--cyan"></span>
+         <span className="width--50 height--50 display--inline-block background--green"></span>
+         <span className="width--50 height--50 display--inline-block background--blue"></span>
+         <span className="width--50 height--50 display--inline-block background--orange"></span>
+         <span className="width--50 height--50 display--inline-block background--white-40b"></span>
+
+      </div>
+
       <div className="push--ends">
         <Badge color="default">Default</Badge>
         <Badge color="draft">Draft</Badge>

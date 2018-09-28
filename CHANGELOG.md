@@ -7,7 +7,24 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 ## Unreleased
 - [Patch] Added auto-focus to the Textarea
 
-##40.0.0 - 2018-09-18
+## 40.3.0 - 2018-09-26
+- [Feature] Add isDisabled prop to Switch component
+
+## 40.2.0 - 2018-09-20
+- [Patch] Updated color palette to reflect latest design team changes
+- [Feature] Added SASS loop to auto-generate CSS3 --var colors from $brand-color base color set
+- [Patch] Minor change to background colors for DiscloseTable
+- [Patch] Allow node type for Radio label prop
+
+## 40.1.0 - 2018-09-19
+- [Feature] Add Steps component
+- [Patch] Add displayError prop to SelectDropdown component
+- [Patch] Minor change to badge line-height to better work with Graphik.
+
+## 40.0.1 - 2018-09-19
+- Accidental release
+
+## 40.0.0 - 2018-09-18
 - [Release] (Breaking changes) Optimizely rebrand with new logo, colors, spacing, rounded corners.
 
 ### CSS

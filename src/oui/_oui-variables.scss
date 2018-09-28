@@ -11,50 +11,29 @@
 
 $namespace                   : '' !default;
 
+/// Spacing Unit
+/// @description Defines spacing for paddings and margins using `spacer`
+/// function.
+
+$spacer-unit                 : 10px;
+
 /// Colors
 /// @description Default color for objects' borders etc.
 
 /// Do not use these values directly in your Sass files. Use the more
 /// specifically named variables below that use these root values.
 
-$base-black                  : #000;
-$base-white                  : #FFF;
-
-// CSS3 Variables
+$base-black                  : #000000;
+$base-white                  : #FFFFFF;
 
 :root {
-  /* brand */
-  --light-blue-100           : #0037FF;
-  --light-blue-75            : #4069FF;
-  --light-blue-50            : #809BFF;
-  --light-blue-25            : #BFCDFF;
-  --light-blue-10            : #EAEDFA;
-  --light-blue-6             : #F3F6FF;
-  --dark-blue-75             : #46456A;
-
-  /* indicators */
-  --yellow                   : #FFCE00;
-  --red                      : #E93D28;
-  --green                    : #00A878;
-  --purple                   : #7500FF;
-  --cyan                     : #36D4FF;
-
-  /* greys */
-  --dark-blue-100            : #080738;
-  --dark-blue-50             : #83839B;
-  --dark-blue-25             : #C1C1CD;
-  --grey-50                  : #E8E8E8;
-  --grey-25                  : #F9F9F9;
-  --white                    : #FFFFFF;
-
-   /* ui */
    --wide-shadow             : 0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.17);
    --border-radius           : 8px;
    --highlight               : var(--light-blue-6);
    --ron-project-badge       : #7b81d1;
+   --white                   : #FFFFFF;
 }
 
-// Duplicate CSS3 vars available in SASS
 $brand-color: (
 
   /* brand */
@@ -67,11 +46,13 @@ $brand-color: (
   dark-blue-75               : #46456A,
 
   /* indicators */
-  yellow                     : #FFCE00,
-  red                        : #E93D28,
-  green                      : #00A878,
-  purple                     : #7500FF,
-  cyan                       : #36D4FF,
+  gold                       : #FFD233,
+  red                        : #FF5B5B,
+  green                      : #33CF76,
+  indigo                     : #8354FF,
+  cyan                       : #33D4FF,
+  blue                       : #33A5FF,
+  orange                     : #FF9C33,
 
   /* greys */
   dark-blue-100              : #080738,
@@ -80,18 +61,37 @@ $brand-color: (
   grey-50                    : #E8E8E8,
   grey-25                    : #F9F9F9,
   paper                      : #FDFDFD,
-
-  /* data-visualization */
-  data-rich-1                : #000041,
-  data-rich-2                : #0000CB,
-  data-rich-3                : #0081FF, // primary token
-  data-rich-4                : #02DA81, // live
-  data-rich-5                : #7EF41E,
-  data-rich-6                : #FDEE02,
-  data-rich-7                : #FFAB00, // draft
-  data-rich-8                : #FF3300
+  white-40b                  : shade($base-white, 40%),
 
 );
+
+
+
+// CSS3 Variables
+// Create CSS3 variables for each $brand-color
+// Use `color: var(--light-blue-100);`
+:root {
+  @each $name, $hex in map-fetch($brand-color) {
+    --#{$name}: #{$hex};
+  }
+}
+
+// Background colors
+// Use `.background--colorname`
+@each $name, $hex in map-fetch($brand-color) {
+  .background--#{$name} {
+    background-color: #{$hex};
+    color: white;
+  }
+}
+
+// Foreground colors
+// Use `.color--colorname`
+@each $name, $hex in map-fetch($brand-color) {
+  .color--#{$name} {
+    color: #{$hex};
+  }
+}
 
 $root-color: (
   grey-85                    : tint($base-black, 15%),
@@ -106,12 +106,12 @@ $root-color: (
   brand                      : map-fetch($brand-color, light-blue-75),
   brand-light                : map-fetch($brand-color, light-blue-25),
   brand-dark                 : map-fetch($brand-color, dark-blue-75),
-  warning                    : map-fetch($brand-color, yellow),
+  warning                    : map-fetch($brand-color, gold),
   bad-news                   : map-fetch($brand-color, red),
   good-news                  : map-fetch($brand-color, green),
-  draft                      : map-fetch($brand-color, data-rich-7),
-  live                       : map-fetch($brand-color, data-rich-4),
-  admin                      : map-fetch($brand-color, purple),
+  draft                      : map-fetch($brand-color, orange),
+  live                       : map-fetch($brand-color, green),
+  admin                      : map-fetch($brand-color, indigo),
   highlight                  : map-fetch($brand-color, light-blue-6)
 );
 
@@ -306,21 +306,6 @@ $button: (
         color                : map-fetch($brand-color, dark-blue-100),
       )
     ),
-    // outline-reverse: (
-    //   background             : transparent,
-    //   border                 : $base-white,
-    //   color                  : $base-white,
-    //   hover:(
-    //     background           : transparent,
-    //     border               : #E0E1E5,
-    //     color                : #E5E5E9,
-    //   ),
-    //   active:(
-    //     background           : transparent,
-    //     border               : $base-white,
-    //     color                : $base-white,
-    //   )
-    // ),
     danger: (
       background             : map-fetch($brand-color, red),
       border                 : map-fetch($brand-color, red),
@@ -356,8 +341,8 @@ $button: (
       )
     ),
     disabled: (
-      background             : #EFF0F2,
-      border                 : #E5E5E9,
+      background             : map-fetch($brand-color, grey-25),
+      border                 : shade(map-fetch($brand-color, grey-50), 10%),
       color                  : map-fetch($color, text, muted)
     )
   )
@@ -368,8 +353,8 @@ $button: (
 
 $token: (
   background-color: (
-    primary                  : map-fetch($brand-color, data-rich-3),
-    secondary                : map-fetch($brand-color, dark-blue-50)
+    primary                  : map-fetch($brand-color, blue),
+    secondary                : map-fetch($brand-color, white-40b)
   ),
   token__number: (
     min-width                : 10px
@@ -404,7 +389,7 @@ $rangeslider: (
 /// Badge
 
 $badge: (
-  background-color           : map-fetch($brand-color, dark-blue-50),
+  background-color           : map-fetch($brand-color, white-40b),
   size                       : 17px,
   min-width                  : 28px, // Graphik letter m width approx.
   font-size                  : 10px,
@@ -567,9 +552,3 @@ $spinner: (
 $z-index: (
   poptip                     : 100
 );
-
-/// Spacing Unit
-/// @description Defines spacing for paddings and margins using `spacer`
-/// function.
-
-$spacer-unit                 : 10px;
