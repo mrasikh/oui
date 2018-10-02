@@ -6,6 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 
 import Poptip from './index.js';
 import Button from '../Button';
+import Icon from 'react-oui-icons';
 
 const stories = storiesOf('Poptip', module);
 stories
@@ -19,39 +20,55 @@ stories
   ));
 
 stories
-  .add('basic poptip', withInfo()(() => (
+  .add('Basic poptip', withInfo()(() => (
     <Poptip
-      trigger='mouseenter'
-      content="Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!">
+      trigger='click'
+      content="This is a sample poptip."
+      position="right">
       <Button width="default">
         Default Poptip
       </Button>
     </Poptip>
   )))
-  .add('poptip to the right', withInfo()(() => (
+  .add('Poptip with children inline', withInfo()(() => (
+    <div
+      className="flex flex-align--center line--1">
+      <input
+        className="text-input width--300 push-half--right"
+        type="text"
+      />
+      <Poptip
+        content="Block Origin"
+        position="right"
+        isInline={ true }>
+        <Icon name='ban'/>
+      </Poptip>
+    </div>
+  )))
+  .add('Poptip to the right', withInfo()(() => (
     <Poptip
       trigger='mouseenter'
-      content="Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!"
+      content="This is a sample poptip."
       position='right'>
       <Button style="unstyled" width="default">
         <a>Poptip on the right</a>
       </Button>
     </Poptip>
   )))
-  .add('poptip light theme', withInfo()(() => (
+  .add('Poptip light theme', withInfo()(() => (
     <Poptip
       trigger='click'
-      content="Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!"
+      content="This is a sample poptip."
       theme='light'>
       <Button style="unstyled" width="default">
         <a>Click Poptip, light theme</a>
       </Button>
     </Poptip>
   )))
-  .add('poptip light theme on the right', withInfo()(() => (
+  .add('Poptip light theme on the right', withInfo()(() => (
     <Poptip
       trigger='click'
-      content="Ipsaofficiisbadnewsminusearumaaperiam!Aperiamreiciendisvitaenihilliberoet,hic!"
+      content="This is a sample poptip."
       theme='light'
       position='right'>
       <Button style="unstyled" width="default">
@@ -61,7 +78,7 @@ stories
   )))
   .add('Customizable with knobs', withInfo()(() => (
     <Poptip
-      content={ 'Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!' }
+      content={ 'This is a sample poptip.' }
       disable={ boolean('disable', false) }
       isAnimated={ boolean('isAnimated', true) }
       position={ select('position', ['top', 'right', 'bottom', 'left'], 'top') }
@@ -69,6 +86,17 @@ stories
       trigger={ select('trigger', ['mouseenter', 'focus', 'click', 'manual'], 'mouseenter') }>
       <Button width="default">
         Customizable Poptip
+      </Button>
+    </Poptip>
+  )))
+  .add('basic poptip with delay', withInfo()(() => (
+    <Poptip
+      trigger='mouseenter'
+      delay={ 1000 }
+      hideDelay={ 5000 }
+      content="Ipsa officiis bad-news minus earum a aperiam! Aperiam reiciendis vitae nihil libero et, hic!">
+      <Button width="default">
+        Default Poptip
       </Button>
     </Poptip>
   )));

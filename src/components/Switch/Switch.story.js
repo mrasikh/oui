@@ -29,5 +29,10 @@ stories.add('On', withInfo()(() => {
 }));
 
 stories.add('Disabled', withInfo()(() => {
-  return <Switch isDisabled={ true } onClick={ action('Cannot click') }/>;
+  return (
+    <div>
+      <Switch checked={ true } isDisabled={ true } onClick={ action('Checked') }/>
+      <Switch checked={ false } isDisabled={ true } onClick={ action('Not checked') }/>
+    </div>
+  );
 }));

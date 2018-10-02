@@ -5,6 +5,7 @@ node_modules
 storybook-static
 s3
 npm-debug.log
+package-lock.json
 
 docs
 scripts

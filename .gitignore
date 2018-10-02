@@ -1,5 +1,6 @@
 # Updating this? Consider updating `.npmignore` as well.
 npm-debug.log
+package-lock.json
 
 dist
 tmp
