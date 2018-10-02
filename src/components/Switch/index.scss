@@ -59,11 +59,6 @@
   transition: all 0.1s ease-in-out;
 }
 
-.oui-switch--disabled + label {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 /* Slider */
 .oui-switch + label:after {
   content: '';
@@ -101,4 +96,12 @@
   box-shadow:
     1px 1px 10px rgba(0, 0, 0, 0.2) inset,
     0 0 0 1px var(--light-blue-25) !important;
+}
+
+.oui-switch--disabled + label {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.oui-switch--disabled:checked + label {
+  opacity: 0.2;
 }
