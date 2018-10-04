@@ -81,7 +81,10 @@ class SearchableSelect extends React.Component {
               return (
                 <SearchableSelectOption
                   key={ item.value }
-                  value={ item.value } item={ item.selectOption } onChange={ onSelect } isSelected={ item.value === value }
+                  value={ item.value }
+                  item={ item.selectOption }
+                  onChange={ onSelect }
+                  isSelected={ item.value === value }
                 />
               );
             })

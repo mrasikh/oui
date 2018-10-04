@@ -9,7 +9,7 @@ const SearchableSelectOption = ({
   value,
 }) => {
   function onClick() {
-    onchange(value);
+    onChange(value);
   }
   return (
     <Dropdown.ListItem hideOnClick={ true }>

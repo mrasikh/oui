@@ -8,7 +8,7 @@ import SearchableSelectOption from '../Option';
 
 describe('components/SearchableSearch', function() {
   let component;
-  let onChange;
+  let onChangeSpy;
 
   const items = [
     {
@@ -26,7 +26,7 @@ describe('components/SearchableSearch', function() {
   ];
 
   beforeEach(function() {
-    onChange = jest.fn();
+    onChangeSpy = jest.fn();
   });
 
   describe('basic rendering', function() {
@@ -40,15 +40,15 @@ describe('components/SearchableSearch', function() {
       component = mount(
         <SearchableSelect items={ items } placeholder="type to search" minDropdownWidth={ 150 } maxResults={ 1 } />
       );
-      expect(component.find('[data-test-section="searchable-select"').attr('style')).toContain('width:150');
-      expect(component.find(Dropdown.Contents).props().minWidth).toEqual(150);
+      expect(component.find('[data-test-section="searchable-select"]').find('[style]').props().style.width).toEqual(150);
+      expect(component.find('DropdownContents').prop('minWidth')).toEqual(150);
     });
 
     it('should render all items in dropdown', function() {
       component = mount(
         <SearchableSelect items={ items } placeholder="type to search" minDropdownWidth={ 150 } maxResults={ 1 } value="cat" />
       );
-      const activator = component.find('[data-test-section="searchable-select"');
+      const activator = component.find('[data-test-section="searchable-select"]');
       activator.simulate('click');
       const listItems = component.find(SearchableSelectOption);
       expect(listItems).toHaveLength(3);
@@ -67,14 +67,16 @@ describe('components/SearchableSearch', function() {
     });
 
     it('should call onChange when another item is selected', function() {
-      component = mount(<SearchableSelect items={ items } placeholder="type to search" maxResults={ 1 } onChange={ onChange } />);
-      const activator = component.find('[data-test-section="searchable-select"');
+      component = mount(
+        <SearchableSelect items={ items } placeholder="type to search" maxResults={ 1 } onChange={ onChangeSpy } />
+      );
+      const activator = component.find('[data-test-section="searchable-select"]');
       activator.simulate('click');
       // const listItems = component.find(SearchableSelectOption);
       const newSelection = component.find(Dropdown.BlockLink).at(1);
       newSelection.simulate('click');
-      expect(onChange).toHaveBeenCalled();
-      expect(onChange).toHaveBeenCalledWith('dog');
+      expect(onChangeSpy).toHaveBeenCalled();
+      expect(onChangeSpy).toHaveBeenCalledWith('dog');
     });
   });
 });
