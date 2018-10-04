@@ -61,7 +61,7 @@ class SearchableSelect extends React.Component {
     return (
       <Dropdown
         isDisabled={ isDisabled } testSection={ testSection } activator={ (
-          <div style={{width: minDropdownWidth}}>
+          <div style={{width: minDropdownWidth}} data-test-section="searchable-select">
             <Input
               type="text"
               isDisabled={ isDisabled }
@@ -115,7 +115,8 @@ SearchableSelect.propTypes = {
    */
   maxResults: PropTypes.number,
   /**
-   * Min width of dropdown and also the width of Input/search field. Any valid CSS width value is acceptable.
+   * Min width of dropdown and also the width of Input/search field.
+   * Any valid CSS width value is acceptable.
    */
   minDropdownWidth: PropTypes.oneOfType([
     PropTypes.string,

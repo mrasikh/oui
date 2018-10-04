@@ -8,9 +8,12 @@ const SearchableSelectOption = ({
   onChange,
   value,
 }) => {
+  function onClick() {
+    onchange(value);
+  }
   return (
     <Dropdown.ListItem hideOnClick={ true }>
-      <Dropdown.BlockLink isLink={!isSelected} onClick={() => { onChange(value) }}>
+      <Dropdown.BlockLink isLink={ !isSelected } onClick={ onClick } >
         { item }
       </Dropdown.BlockLink>
     </Dropdown.ListItem>

@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import SearchableSelect from './index';
 import {withInfo} from '@storybook/addon-info';
 import styled from 'styled-components';
+import {action} from '@storybook/addon-actions';
 
 const items = [
   {
@@ -31,7 +32,13 @@ stories
 stories.add('Default', withInfo()(() => {
   return (
     <Container>
-      <SearchableSelect items={items} placeholder="type to search" minDropdownWidth={ 150 } maxResults={1} />
+      <SearchableSelect
+        items={ items }
+        placeholder="type to search"
+        minDropdownWidth={ 150 }
+        maxResults={ 1 }
+        onChange={ action('item was clicked') }
+      />
     </Container>
   );
 }));
