@@ -40,8 +40,11 @@ describe('components/SearchableSearch', function() {
       component = mount(
         <SearchableSelect items={ items } placeholder="type to search" minDropdownWidth={ 150 } />
       );
-      expect(component.find('[data-test-section="searchable-select"]').find('[style]').props().style.width).toEqual(150);
-      expect(component.find('DropdownContents').prop('minWidth')).toEqual(150);
+      const activator = component.find('[data-test-section="searchable-select"]');
+      expect(activator.find('[style]').props().style.width).toEqual(150);
+
+      activator.simulate('click');
+      expect(component.find(Dropdown.Contents).props().minWidth).toEqual(150);
     });
 
     it('should render all items in dropdown', function() {
@@ -73,6 +76,7 @@ describe('components/SearchableSearch', function() {
       const activator = component.find('[data-test-section="searchable-select"]');
       activator.simulate('click');
       const newSelection = component.find(Dropdown.BlockLink).at(1);
+
       newSelection.simulate('click');
       expect(onChangeSpy).toHaveBeenCalled();
       expect(onChangeSpy).toHaveBeenCalledWith('dog');
@@ -96,7 +100,7 @@ describe('components/SearchableSearch', function() {
 
     it('should trim the list when `maxResult` is provided', function() {
       component = mount(
-        <SearchableSelect items={ items } placeholder="type to search" maxResults={1} />
+        <SearchableSelect items={ items } placeholder="type to search" maxResults={ 1 } />
       );
       const activator = component.find('[data-test-section="searchable-select"]');
       activator.simulate('click');
@@ -105,7 +109,7 @@ describe('components/SearchableSearch', function() {
 
     it('should render error class and display error note when `displayError` is true', function() {
       component = mount(
-        <SearchableSelect items={ items } placeholder="type to search" errorNote="foo error" displayError={true} />
+        <SearchableSelect items={ items } placeholder="type to search" errorNote="foo error" displayError={ true } />
       );
       expect(component.find('[data-test-section="searchable-select"]').hasClass('oui-form-bad-news')).toBe(true);
       expect(component.find('[data-test-section="searchable-select-error-note"]').text()).toEqual('foo error');
@@ -113,7 +117,7 @@ describe('components/SearchableSearch', function() {
 
     it('should not render error class and display error note when `displayError` is false', function() {
       component = mount(
-        <SearchableSelect items={ items } placeholder="type to search" errorNote="foo error" displayError={false} />
+        <SearchableSelect items={ items } placeholder="type to search" errorNote="foo error" displayError={ false } />
       );
       expect(component.find('[data-test-section="searchable-select"]').hasClass('oui-form-bad-news')).toBe(false);
       expect(component.find('[data-test-section="searchable-select-error-note"]').exists()).toBe(false);

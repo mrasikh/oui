@@ -57,9 +57,10 @@ class SearchableSelect extends React.Component {
     return (
       <Dropdown
         isDisabled={ isDisabled } testSection={ testSection } activator={ (
-          <div style={{width: minDropdownWidth}} data-test-section="searchable-select" className={SearchableSelectClasses}>
+          <div style={{width: minDropdownWidth}} data-test-section="searchable-select" className={ SearchableSelectClasses }>
             {
-              displayError && (<div className='oui-form-note' data-test-section="searchable-select-error-note">{errorNote}</div>)
+              displayError &&
+              (<div className='oui-form-note' data-test-section="searchable-select-error-note">{errorNote}</div>)
             }
             <Input
               type="text"

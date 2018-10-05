@@ -2,13 +2,17 @@
  * Find if a string contains the filter terms.
  * Filter term containing spaces shall be break in sub-strings.
  * And each filter-term-sub-string shall be searched separately in the string.
- * @param stringToFind
- * @param contentToSearch
+ * @param {string} stringToFind: string to find.
+ * @param {string} contentToSearch: string object
  * @returns {boolean}
  */
 export const isFilterTermInItem = function isFilterTermInItem(stringToFind, contentToSearch) {
   if (!contentToSearch) {
     return false;
+  }
+
+  if (stringToFind === null || stringToFind === undefined) {
+    throw new Error('invalid value for search');
   }
 
   const filters = stringToFind.match(/\S+/g) || [];
@@ -27,12 +31,14 @@ export const isFilterTermInItem = function isFilterTermInItem(stringToFind, cont
 /**
  * Returns a filtered array.
  * If `filterString` is null or empty string, it will return the original array.
- * Although the maxResult shall be applied and the array shall be trimmed down to maxResult size.
- * @param filterString: term to search inside array
- * @param items: Objects on which filter shall be applied
- * @param key: if `items` is an array of objects,
- * `key` will tell on which property of `items object` the filter shall be applied.
- * @param maxResult: size of end result array.
+ * Although the maxResult shall be applied
+ * and the array shall be trimmed down to maxResult size.
+ * @param {string} filterString: Filter term to search inside array
+ * @param {Array} items: Array of objects on which filter shall be applied
+ * @param {string} key: if `items` is an array of objects,
+ * `key` will tell on which property of `items object`
+ * the filter shall be applied.
+ * @param {number} maxResult: size of end result array.
  * @returns {*}
  */
 export const getFilteredItems = function(filterString, items, key = null, maxResult = Number.MAX_SAFE_INTEGER) {
@@ -45,7 +51,7 @@ export const getFilteredItems = function(filterString, items, key = null, maxRes
 
   items.map(function(item) {
     let contentToSearch = key ? item[key] : item;
-    if (foundCount < maxResult && (!filterString || isFilterTermInItem(contentToSearch, filterString))) {
+    if (foundCount < maxResult && (filterString === '' || isFilterTermInItem(filterString, contentToSearch))) {
       result.push(item);
       foundCount++;
     }

@@ -20,50 +20,52 @@ const objects = [
 describe('utils/filter', () => {
   describe('#isFilterTermInItem', () => {
     it('should return `true` if an existing items is searched', function() {
-      expect(() => {isFilterTermInItem('ore', simpleString); }).toBe(true);
+      const isFilterTermInItemResult = isFilterTermInItem('ore', simpleString);
+
+      expect(isFilterTermInItemResult).toBe(true);
     });
     it('should search when `stringToFind` contains space in between', function() {
-      const isFilterTermInItemWrapper = () => {
-        isFilterTermInItem('ca ore', simpleString);
-      };
-      expect(isFilterTermInItemWrapper).toBe(true);
-      expect(isFilterTermInItemWrapper).toBe(false);
+      const isFilterTermInItemResult = isFilterTermInItem('ca ore', simpleString);
+
+      expect(isFilterTermInItemResult).toBe(true);
     });
 
-    it('should return false if empty or null `stringToFind` is provided', function() {
-      expect(() => {isFilterTermInItem('', simpleString); }).toBe(false);
-      expect(() => {isFilterTermInItem(null, simpleString); }).toBe(false);
+    it('should return false if empty `stringToFind` is provided', function() {
+      expect(isFilterTermInItem('', simpleString)).toBe(false);
+    });
+
+    it('should throw error when null `stringToFind` is provided', function() {
+      expect(() => { isFilterTermInItem(null, simpleString); }).toThrow();
     });
   });
 
   describe('#getFilteredItems', () => {
     it('should search the `filterString` in a simple string array and return matching elements', function() {
-      const getFilteredItemsWrapper = () => {
-        return getFilteredItems('a', simpleStringArray);
-      };
-      expect(getFilteredItemsWrapper.length).toEqual(2);
-      expect(getFilteredItemsWrapper.at(0)).toEqual('cat');
-      expect(getFilteredItemsWrapper.at(1)).toEqual('bear');
+      const getFilteredItemsResult = getFilteredItems('a', simpleStringArray);
+
+      expect(getFilteredItemsResult).toHaveLength(2);
+      expect(getFilteredItemsResult[0]).toEqual('cat');
+      expect(getFilteredItemsResult[1]).toEqual('bear');
     });
 
     it('should search an array of object when `key` is provided', function() {
-      const getFilteredItemsWrapper = () => {
-        return getFilteredItems('a', objects, 'value');
-      };
-      expect(getFilteredItemsWrapper.length).toEqual(2);
-      expect(getFilteredItemsWrapper.at(0).value).toEqual('cat');
-      expect(getFilteredItemsWrapper.at(1).value).toEqual('bear');
+      const getFilteredItemsResult = getFilteredItems('a', objects, 'value');
+
+      expect(getFilteredItemsResult).toHaveLength(2);
+      expect(getFilteredItemsResult[0].value).toEqual('cat');
+      expect(getFilteredItemsResult[1].value).toEqual('bear');
     });
 
     it('should trim the final result when `maxResult` is provided', function() {
-      const getFilteredItemsWrapper = () => {
-        return getFilteredItems('a', objects, 'value', 1);
-      };
-      expect(getFilteredItemsWrapper.length).toEqual(1);
+      const getFilteredItemsResult = getFilteredItems('a', objects, 'value', 1);
+      expect(getFilteredItemsResult).toHaveLength(1);
     });
 
-    it('should throw error when empty array is provided', function() {
-      expect(() => {getFilteredItems('a', []); }).toThrow();
+    it('should throw error when null is provided as `items`', function() {
+      const getFilteredItemsWrapepr = () => {
+        getFilteredItems('a', null);
+      };
+      expect(getFilteredItemsWrapepr).toThrow();
     });
   });
 });
