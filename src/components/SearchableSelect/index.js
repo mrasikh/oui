@@ -1,22 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
+import { getFilteredItems } from '../../utils/filter';
 import Dropdown from '../Dropdown';
 import Input from '../Input';
 import SearchableSelectOption from './Option';
-
-function filterIteams(items, searchKey, maxResult) {
-  let result = [];
-  let foundCount = 0;
-  if (!searchKey) {return items;}
-  items.map(function(item) {
-    if (foundCount < maxResult && item.value.includes(searchKey)) {
-      result.push(item);
-      foundCount++;
-    }
-  });
-  return result;
-}
 
 class SearchableSelect extends React.Component {
   constructor(props) {
@@ -40,6 +29,7 @@ class SearchableSelect extends React.Component {
     const {
       displayError,
       dropdownDirection,
+      errorNote,
       isDisabled,
       items,
       maxResults,
@@ -51,6 +41,12 @@ class SearchableSelect extends React.Component {
     } = this.props;
     const onSelect = this.onSelect;
 
+    let SearchableSelectClasses = classNames(
+      {
+        ['oui-form-bad-news']: displayError,
+      }
+    );
+
     let selectedItem = {};
     this.props.items.forEach(item => {
       if (item.value === value) {
@@ -61,7 +57,10 @@ class SearchableSelect extends React.Component {
     return (
       <Dropdown
         isDisabled={ isDisabled } testSection={ testSection } activator={ (
-          <div style={{width: minDropdownWidth}} data-test-section="searchable-select">
+          <div style={{width: minDropdownWidth}} data-test-section="searchable-select" className={SearchableSelectClasses}>
+            {
+              displayError && (<div className='oui-form-note' data-test-section="searchable-select-error-note">{errorNote}</div>)
+            }
             <Input
               type="text"
               isDisabled={ isDisabled }
@@ -70,6 +69,7 @@ class SearchableSelect extends React.Component {
               value={ selectedItem.value || this.state.searchWord }
               onChange={ this.onKeyPress }
               displayError={ displayError }
+              testSection="searchableSelectInput"
             />
           </div>
         ) }
@@ -77,7 +77,7 @@ class SearchableSelect extends React.Component {
         width={ minDropdownWidth }>
         <Dropdown.Contents minWidth={ minDropdownWidth } direction={ dropdownDirection } >
           {
-            filterIteams(items, this.state.searchWord, maxResults).map(function(item) {
+            getFilteredItems(this.state.searchWord, items, 'value', maxResults).map(function(item) {
               return (
                 <SearchableSelectOption
                   key={ item.value }
@@ -101,6 +101,10 @@ SearchableSelect.propTypes = {
    */
   displayError: PropTypes.bool,
   dropdownDirection: PropTypes.exact('up'),
+  /**
+   * display an error message when `displayError is set `true`,
+   */
+  errorNote: PropTypes.string,
   isDisabled: PropTypes.bool,
   /**
    * Dropdown items that can be selected from the select dropdown.
