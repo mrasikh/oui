@@ -47,13 +47,6 @@ class SearchableSelect extends React.Component {
       }
     );
 
-    let selectedItem = {};
-    this.props.items.forEach(item => {
-      if (item.value === value) {
-        selectedItem = item;
-      }
-    });
-
     return (
       <Dropdown
         isDisabled={ isDisabled }
@@ -70,8 +63,8 @@ class SearchableSelect extends React.Component {
               type="text"
               isDisabled={ isDisabled }
               isOptional={ false }
-              placeholder={ placeholder }
-              value={ selectedItem.value || this.state.searchTerm }
+              placeholder={ value || placeholder }
+              value={ this.state.searchTerm }
               onChange={ this.onChange }
               testSection="searchableSelectInput"
             />

@@ -45,7 +45,7 @@ stories.add('Default with knobs', withInfo()(() => {
         maxResults={ number('maxResults', Number.MAX_SAFE_INTEGER) }
         placement={ select('placement', ['top-start', 'bottom-start']) }
         dropdownDirection={ select('dropdownDirection', ['up', null]) }
-        value={ select('value', ['cat', 'dog', 'bear']) }
+        value={ select('value', [null, 'cat', 'dog', 'bear']) }
       />
     </Container>
   );
