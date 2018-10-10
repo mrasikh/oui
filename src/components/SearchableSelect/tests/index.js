@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import SearchableSelect from '../index';
 import Input from '../../Input';
 import Dropdown from '../../Dropdown';
-import SearchableSelectOption from '../Option';
+import SelectDropdown from '../../SelectDropdown';
 
 describe('components/SearchableSearch', function() {
   let component;
@@ -12,15 +12,15 @@ describe('components/SearchableSearch', function() {
 
   const items = [
     {
-      selectOption: React.createElement('div', {}, 'cat'),
+      label: React.createElement('div', {}, 'cat'),
       value: 'cat',
     },
     {
-      selectOption: React.createElement('div', {}, 'dog'),
+      label: React.createElement('div', {}, 'dog'),
       value: 'dog',
     },
     {
-      selectOption: React.createElement('div', {}, 'bear'),
+      label: React.createElement('div', {}, 'bear'),
       value: 'bear',
     },
   ];
@@ -53,20 +53,13 @@ describe('components/SearchableSearch', function() {
       );
       const activator = component.find('[data-test-section="searchable-select"]');
       activator.simulate('click');
-      const listItems = component.find(SearchableSelectOption);
+      const listItems = component.find(SelectDropdown.Option);
       expect(listItems).toHaveLength(3);
 
-      const item1 = listItems.at(0);
-      expect(item1.text()).toContain('cat');
-      expect(item1.props().isSelected).toEqual(true);
-
-      const item2 = listItems.at(1);
-      expect(item2.text()).toContain('dog');
-      expect(item2.props().isSelected).toEqual(false);
-
-      const item3 = listItems.at(2);
-      expect(item3.text()).toContain('bear');
-      expect(item3.props().isSelected).toEqual(false);
+      listItems.forEach((item, index) => {
+        expect(item.text()).toContain(items[index].value);
+        expect(item.props().isSelected).toEqual(items[index].value === 'cat');
+      });
     });
 
     it('should call onChange when another item is selected', function() {
@@ -82,20 +75,19 @@ describe('components/SearchableSearch', function() {
       expect(onChangeSpy).toHaveBeenCalledWith('dog');
     });
 
-    it('should update the state when typed in search field', function() {
+    it('should update the dropdown content when typed in search field', function() {
       component = mount(
         <SearchableSelect items={ items } placeholder="type to search" />
       );
       const activator = component.find('[data-test-section="searchable-select"]');
       activator.simulate('click');
-      expect(component.find(SearchableSelectOption)).toHaveLength(3);
+      expect(component.find(SelectDropdown.Option)).toHaveLength(3);
 
       component.find('[data-test-section="searchableSelectInput"]').simulate('change', { target: { value: 'a' }});
-      expect(component.state().searchWord).toEqual('a');
-      expect(component.find(SearchableSelectOption)).toHaveLength(2);
+      expect(component.find(SelectDropdown.Option)).toHaveLength(2);
 
-      expect(component.find(SearchableSelectOption).at(0).text()).toContain('cat');
-      expect(component.find(SearchableSelectOption).at(1).text()).toContain('bear');
+      expect(component.find(SelectDropdown.Option).at(0).text()).toContain('cat');
+      expect(component.find(SelectDropdown.Option).at(1).text()).toContain('bear');
     });
 
     it('should trim the list when `maxResult` is provided', function() {
@@ -104,7 +96,7 @@ describe('components/SearchableSearch', function() {
       );
       const activator = component.find('[data-test-section="searchable-select"]');
       activator.simulate('click');
-      expect(component.find(SearchableSelectOption)).toHaveLength(1);
+      expect(component.find(SelectDropdown.Option)).toHaveLength(1);
     });
 
     it('should render error class and display error note when `displayError` is true', function() {

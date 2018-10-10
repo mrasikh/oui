@@ -9,15 +9,15 @@ import {action} from '@storybook/addon-actions';
 
 const items = [
   {
-    selectOption: React.createElement('div', {}, 'cat'),
+    label: React.createElement('div', {}, 'cat'),
     value: 'cat',
   },
   {
-    selectOption: React.createElement('div', {}, 'dog'),
+    label: React.createElement('div', {}, 'dog'),
     value: 'dog',
   },
   {
-    selectOption: React.createElement('div', {}, 'bear'),
+    label: React.createElement('div', {}, 'bear'),
     value: 'bear',
   },
 ];
@@ -45,6 +45,7 @@ stories.add('Default with knobs', withInfo()(() => {
         maxResults={ number('maxResults', Number.MAX_SAFE_INTEGER) }
         placement={ select('placement', ['top-start', 'bottom-start']) }
         dropdownDirection={ select('dropdownDirection', ['up', null]) }
+        value={ select('value', ['cat', 'dog', 'bear']) }
       />
     </Container>
   );

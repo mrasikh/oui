@@ -5,23 +5,23 @@ import classNames from 'classnames';
 import { getFilteredItems } from '../../utils/filter';
 import Dropdown from '../Dropdown';
 import Input from '../Input';
-import SearchableSelectOption from './Option';
+import SelectDropdown from '../SelectDropdown';
 
 class SearchableSelect extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchWord: '',
+      searchTerm: '',
     };
   }
 
-  onKeyPress = (event) => {
-    this.setState({searchWord: event.target.value});
+  onChange = (event) => {
+    this.setState({searchTerm: event.target.value});
   };
 
   onSelect = (value) => {
-    this.setState({searchWord: value});
+    this.setState({searchTerm: value});
     this.props.onChange(value);
   };
 
@@ -56,7 +56,11 @@ class SearchableSelect extends React.Component {
 
     return (
       <Dropdown
-        isDisabled={ isDisabled } testSection={ testSection } activator={ (
+        isDisabled={ isDisabled }
+        testSection={ testSection }
+        placement={ placement }
+        width={ minDropdownWidth }
+        activator={ (
           <div style={{width: minDropdownWidth}} data-test-section="searchable-select" className={ SearchableSelectClasses }>
             {
               displayError &&
@@ -67,23 +71,22 @@ class SearchableSelect extends React.Component {
               isDisabled={ isDisabled }
               isOptional={ false }
               placeholder={ placeholder }
-              value={ selectedItem.value || this.state.searchWord }
-              onChange={ this.onKeyPress }
-              displayError={ displayError }
+              value={ selectedItem.value || this.state.searchTerm }
+              onChange={ this.onChange }
               testSection="searchableSelectInput"
             />
           </div>
-        ) }
-        placement={ placement }
-        width={ minDropdownWidth }>
-        <Dropdown.Contents minWidth={ minDropdownWidth } direction={ dropdownDirection } >
+        ) }>
+        <Dropdown.Contents
+          minWidth={ minDropdownWidth }
+          direction={ dropdownDirection }>
           {
-            getFilteredItems(this.state.searchWord, items, 'value', maxResults).map(function(item) {
+            getFilteredItems(this.state.searchTerm, items, 'value', maxResults).map(function(item) {
               return (
-                <SearchableSelectOption
+                <SelectDropdown.Option
                   key={ item.value }
                   value={ item.value }
-                  item={ item.selectOption }
+                  label={ item.label }
                   onChange={ onSelect }
                   isSelected={ item.value === value }
                 />
@@ -116,7 +119,7 @@ SearchableSelect.propTypes = {
       PropTypes.number,
       PropTypes.bool,
     ]).isRequired,
-    selectOption: PropTypes.node.isRequired,
+    label: PropTypes.node.isRequired,
   })).isRequired,
   /**
    * Max number of items that will be shown in dropdown at a time.
