@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
 
 import { getFilteredItems } from '../../utils/filter';
 import Dropdown from '../Dropdown';
@@ -27,9 +26,7 @@ class SearchableSelect extends React.Component {
 
   render() {
     const {
-      displayError,
       dropdownDirection,
-      errorNote,
       isDisabled,
       items,
       maxResults,
@@ -41,12 +38,6 @@ class SearchableSelect extends React.Component {
     } = this.props;
     const onSelect = this.onSelect;
 
-    let SearchableSelectClasses = classNames(
-      {
-        ['oui-form-bad-news']: displayError,
-      }
-    );
-
     return (
       <Dropdown
         isDisabled={ isDisabled }
@@ -54,11 +45,7 @@ class SearchableSelect extends React.Component {
         placement={ placement }
         width={ minDropdownWidth }
         activator={ (
-          <div style={{width: minDropdownWidth}} data-test-section="searchable-select" className={ SearchableSelectClasses }>
-            {
-              displayError &&
-              (<div className='oui-form-note' data-test-section="searchable-select-error-note">{errorNote}</div>)
-            }
+          <div style={{width: minDropdownWidth}} data-test-section="searchable-select">
             <Input
               type="text"
               isDisabled={ isDisabled }
@@ -93,15 +80,7 @@ class SearchableSelect extends React.Component {
 }
 
 SearchableSelect.propTypes = {
-  /**
-   * Show error by default.
-   */
-  displayError: PropTypes.bool,
   dropdownDirection: PropTypes.exact('up'),
-  /**
-   * display an error message when `displayError is set `true`,
-   */
-  errorNote: PropTypes.string,
   isDisabled: PropTypes.bool,
   /**
    * Dropdown items that can be selected from the select dropdown.
