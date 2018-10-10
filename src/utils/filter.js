@@ -7,15 +7,11 @@
  * @returns {boolean}
  */
 export const isFilterTermInItem = function isFilterTermInItem(stringToFind, contentToSearch) {
-  if (!contentToSearch) {
+  if (typeof contentToSearch !== 'string' || typeof stringToFind !== 'string') {
     return false;
   }
 
-  if (stringToFind === null || stringToFind === undefined) {
-    throw new Error('invalid value for search');
-  }
-
-  const filters = stringToFind.match(/\S+/g) || [];
+  const filters = stringToFind.match(/\S+/g) || [''];
 
   for (let i = 0; i < filters.length; i++) {
     let lowerCaseContent = contentToSearch.toLocaleLowerCase();
@@ -42,19 +38,13 @@ export const isFilterTermInItem = function isFilterTermInItem(stringToFind, cont
  * @returns {*}
  */
 export const getFilteredItems = function(filterString, items, key = null, maxResult = Number.MAX_SAFE_INTEGER) {
-  if (!items) {
-    throw new Error('Can\'t filter on an undefined array');
-  }
+  items = items || [];
 
-  let result = [];
-  let foundCount = 0;
+  if (typeof filterString !== 'string') {items.slice(0, maxResult);}
 
-  items.map(function(item) {
+  let filteredItems = items.filter(item => {
     let contentToSearch = key ? item[key] : item;
-    if (foundCount < maxResult && (filterString === '' || isFilterTermInItem(filterString, contentToSearch))) {
-      result.push(item);
-      foundCount++;
-    }
+    return isFilterTermInItem(filterString, contentToSearch);
   });
-  return result;
+  return filteredItems.slice(0, maxResult);
 };

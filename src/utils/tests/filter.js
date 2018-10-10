@@ -31,11 +31,11 @@ describe('utils/filter', () => {
     });
 
     it('should return false if empty `stringToFind` is provided', function() {
-      expect(isFilterTermInItem('', simpleString)).toBe(false);
+      expect(isFilterTermInItem('', simpleString)).toBe(true);
     });
 
-    it('should throw error when null `stringToFind` is provided', function() {
-      expect(() => { isFilterTermInItem(null, simpleString); }).toThrow();
+    it('should return false when null `stringToFind` is provided', function() {
+      expect(isFilterTermInItem(null, simpleString)).toBe(false);
     });
   });
 
@@ -56,16 +56,13 @@ describe('utils/filter', () => {
       expect(getFilteredItemsResult[1].value).toEqual('bear');
     });
 
-    it('should trim the final result when `maxResult` is provided', function() {
+    it('should truncate the final result when `maxResult` is provided', function() {
       const getFilteredItemsResult = getFilteredItems('a', objects, 'value', 1);
       expect(getFilteredItemsResult).toHaveLength(1);
     });
 
-    it('should throw error when null is provided as `items`', function() {
-      const getFilteredItemsWrapepr = () => {
-        getFilteredItems('a', null);
-      };
-      expect(getFilteredItemsWrapepr).toThrow();
+    it('should return empty array when null is provided as `items`', function() {
+      expect(getFilteredItems('a', null)).toEqual([]);
     });
   });
 });
