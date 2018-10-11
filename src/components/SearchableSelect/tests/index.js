@@ -98,21 +98,5 @@ describe('components/SearchableSearch', function() {
       activator.simulate('click');
       expect(component.find(SelectDropdown.Option)).toHaveLength(1);
     });
-
-    it('should render error class and display error note when `displayError` is true', function() {
-      component = mount(
-        <SearchableSelect items={ items } placeholder="type to search" errorNote="foo error" displayError={ true } />
-      );
-      expect(component.find('[data-test-section="searchable-select"]').hasClass('oui-form-bad-news')).toBe(true);
-      expect(component.find('[data-test-section="searchable-select-error-note"]').text()).toEqual('foo error');
-    });
-
-    it('should not render error class and display error note when `displayError` is false', function() {
-      component = mount(
-        <SearchableSelect items={ items } placeholder="type to search" errorNote="foo error" displayError={ false } />
-      );
-      expect(component.find('[data-test-section="searchable-select"]').hasClass('oui-form-bad-news')).toBe(false);
-      expect(component.find('[data-test-section="searchable-select-error-note"]').exists()).toBe(false);
-    });
   });
 });
