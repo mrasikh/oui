@@ -38,19 +38,70 @@ stories
       />);
   })).add('Input', () => {
     return (
-      <Input
-        label="Field label"
-        note="A short description or note about this field."
-        placeholder="Just a placeholder"
-        type="text"
-      />);
-  }).add('Error state', () => {
+      <div>
+        <fieldset>
+          <Input
+            label="Field label"
+            note="A short description or note about this field."
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            label="Field label"
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            note="A short description or note about this field."
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+      </div>);
+  }).add('Error states', () => {
     return (
-      <Input
-        label="Field label"
-        displayError={ true }
-        note="A short description or note about this field."
-        placeholder="Just a placeholder"
-        type="text"
-      />);
+      <div>
+        <fieldset>
+          <Input
+            label="Field label"
+            displayError={ true }
+            note="A short description or note about this field."
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            label="Field label"
+            displayError={ true }
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            displayError={ true }
+            note="A short description or note about this field."
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            displayError={ true }
+            placeholder="Just a placeholder"
+            type="text"
+          />
+        </fieldset>
+      </div>);
   });

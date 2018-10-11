@@ -23,6 +23,19 @@ const Link = ({
     'pointer-events--none': isDisabled,
   });
 
+  if (!href && !onClick) {
+    return (
+      <span
+        data-ui-component={ true }
+        className={ classes }
+        data-test-section={ testSection }
+        data-track-id={ testSection }
+        disabled={ isDisabled }>
+        { children }
+      </span>
+    );
+  }
+
   return (
     <a
       data-ui-component={ true }

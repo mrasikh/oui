@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`components/Link should render as a span if there is no href 1`] = `
+<span
+  className="link"
+  data-ui-component={true}
+  disabled={false}
+>
+  Faux Link
+</span>
+`;
+
 exports[`components/Link should render disabled 1`] = `
 <a
   className="link link--disabled pointer-events--none"
@@ -11,22 +21,12 @@ exports[`components/Link should render disabled 1`] = `
 </a>
 `;
 
-exports[`components/Link should render onclick 1`] = `
-<a
-  className="link"
-  data-ui-component={true}
-  disabled={false}
-  onClick={[MockFunction]}
->
-  Test Link
-</a>
-`;
-
 exports[`components/Link should render style classes 1`] = `
 <a
   className="link link--muted"
   data-ui-component={true}
   disabled={false}
+  href="http://google.com"
 >
   Test Link
 </a>

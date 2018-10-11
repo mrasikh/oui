@@ -249,7 +249,7 @@
 ///         <li class="#{$namespace}form-field__item #{$namespace}form-bad-news">
 ///           <label class="oui-label oui-label--required">Address</label>
 ///           <input type="text" class="oui-text-input">
-///           <div class="#{$namespace}form-note #{$namespace}form-note--bad-news">This field is required.</div>
+///           <div class="#{$namespace}form-note #{$namespace}form-note---news">This field is required.</div>
 ///         </li>
 ///         <li class="#{$namespace}form-field__item #{$namespace}form-bad-news">
 ///           <label class="oui-label oui-label--required">Fill Space</label>
@@ -482,6 +482,15 @@ fieldset {
   .#{$namespace}textarea,
   .oui-textarea {
     border-color: map-fetch($color, ui, bad-news);
+
+    &:hover {
+      border-color: shade(map-fetch($color, ui, bad-news), 40%);
+    }
+
+    &:focus {
+      border-color: tint(map-fetch($color, ui, bad-news), 60%);
+    }
+
   }
 }
 

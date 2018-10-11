@@ -5,8 +5,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Patch] Update Travis.yml to send alerts to #oui-alerts in Slack
+- [Patch] Add hover and focus error states to input
+
+## 40.5.0 - 2018-10-10
+- [Patch] Font-weight 400 for tiny button
 - [Patch] Added auto-focus to the Textarea
 - [Patch] Added delay and hideDelay prop for the poptip
+- [Feature] Support Buttons that look like Links and Links that look like Buttons
+- [Feature] Create Sidebar component
 
 ## 40.4.1 - 2018-10-01
 - [Patch] Refine Switch disabled styles

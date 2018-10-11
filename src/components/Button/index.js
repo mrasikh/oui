@@ -10,6 +10,7 @@ import classNames from 'classnames';
 const Button = ({
   ariaLabel,
   isSubmit = false,
+  isLink,
   children,
   isActive,
   isDisabled = false,
@@ -30,6 +31,19 @@ const Button = ({
   });
 
   const type = isSubmit ? 'submit' : 'button';
+
+  if (isLink) {
+    return (
+      <div
+        data-oui-component={ true }
+        className={ buttonClassNames }
+        disabled={ isDisabled }
+        onBlur={ onBlur }
+        data-test-section={ testSection }>
+        { children }
+      </div>
+    );
+  }
 
   return (
     <button
@@ -56,6 +70,8 @@ Button.propTypes = {
   isActive: PropTypes.bool,
   /** Prevent users from interacting with the button */
   isDisabled: PropTypes.bool,
+  /** Changes the button to a div for insertion within a Link component */
+  isLink: PropTypes.bool,
   /** Make the button act as a submit button */
   isSubmit: PropTypes.bool,
   /** Function that fires when the button loses focus */
@@ -94,6 +110,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  isLink: false,
   onBlur: () => {},
   onClick: () => {},
   onMouseDown: () => {},

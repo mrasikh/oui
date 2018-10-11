@@ -257,7 +257,7 @@ $button: (
       line-height            : 18px,
       font-size              : 11px,
       padding                : 0 8px,
-      font-weight            : 500,
+      font-weight            : 400,
       border-radius          : 5px
     ),
   ),
@@ -550,5 +550,6 @@ $spinner: (
 /// Z-index Values
 
 $z-index: (
-  poptip                     : 100
+  poptip                     : 100,
+  sidebar                    : 99
 );

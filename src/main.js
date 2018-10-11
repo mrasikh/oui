@@ -23,6 +23,7 @@ export { default as Popover } from './components/Popover';
 export { default as Poptip } from './components/Poptip';
 export { default as Radio } from './components/Radio';
 export { default as SelectDropdown } from './components/SelectDropdown';
+export { default as Sidebar } from './components/Sidebar';
 export { default as Switch } from './components/Switch';
 export { default as Table } from './components/Table';
 export { default as RangeSlider } from './components/RangeSlider';

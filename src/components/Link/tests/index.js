@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
 describe('components/Link', () => {
-  const mockFunction = jest.fn();
 
   it('should render disabled', () => {
     const output = shallow(
@@ -31,6 +30,7 @@ describe('components/Link', () => {
   it('should render style classes', () => {
     const output = shallow(
       <Link
+        href='http://google.com'
         style='muted'>
         Test Link
       </Link>
@@ -38,14 +38,10 @@ describe('components/Link', () => {
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 
-  it('should render onclick', () => {
+  it('should render as a span if there is no href', () => {
     const output = shallow(
-      <Link
-        onClick={ mockFunction }>
-        Test Link
-      </Link>
+      <Link>Faux Link</Link>
     );
     expect(shallowToJson(output)).toMatchSnapshot();
   });
-
 });

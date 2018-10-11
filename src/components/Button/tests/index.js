@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../index';
 import { shallow } from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
 
 describe('components/Button', () => {
   it('should render a `button` HTML element', () => {
@@ -124,5 +125,13 @@ describe('components/Button', () => {
     );
 
     expect(component.hasClass('oui-button--full')).toBe(true);
+  });
+
+  it('should render as a div if isLink is true', () => {
+    const output = shallow(
+      <Button isLink={ true } >Faux Button</Button>
+    );
+
+    expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

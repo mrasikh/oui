@@ -7,11 +7,14 @@ import { withInfo } from '@storybook/addon-info';
 
 import TextField from './index.js';
 
-const stories = storiesOf('TextField', module);
+const stories = storiesOf('TextField (deprecated)', module);
 stories
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <div id="root-preview">
+      <div className="attention attention--bad-news oui-text--center push-double--bottom">
+        TextField component is deprecated. Please use Input instead for the same features.
+      </div>
       {story()}
     </div>
   ));
@@ -25,7 +28,7 @@ stories
         isFilter={ boolean('isFilter', false) }
         isOptional={ boolean('isOptional', false) }
         isRequired={ boolean('isRequired', false) }
-        label={ text('Label', '') }
+        label={ text('Label', 'Use Input Component instead') }
         max={ number('max', 50) }
         min={ number('min', 10) }
         note={ text('note', '') }
@@ -38,24 +41,25 @@ stories
   })).add('TextField', () => {
     return (
       <TextField
-        label="Field label"
+        label="Use Input Component instead"
         note="A short description or note about this field."
         placeholder="Just a placeholder"
         type="text"
       />);
-  }).add('Percent', withInfo()(() => {
+  }).add('Percent', () => {
     return (
       <TextField
+        label="Total Traffic Allocated:"
         placeholder="100"
         defaultValue={ text('defaultValue', '0') }
         type="percent"
         max={ number('max', 100) }
         min={ number('min', 0) }
       />);
-  })).add('Error state', () => {
+  }).add('Error state', () => {
     return (
       <TextField
-        label="Field label"
+        label="Use Input Component instead"
         displayError={ true }
         note="Form error note."
         placeholder="Just a placeholder"

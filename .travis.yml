@@ -19,20 +19,4 @@ deploy:
     tags: true
 notifications:
   slack:
-    rooms:
-    # - secure: OdYo05A7wbHvUS8VHV2ZVQ2Gjd2ubdB3ZcqaASJOxnq/JwDMJcmaT/MBOHSPA1vZe7DlXeCe20WssBEbmtoGY0out3kVdUomLge8CXf3imrKuOgg/K8zglf8g13BNHhaPqEBIa5eST0YdLxC1r0pKng+SDkOoX3xIwkCdeBKFPQ=
-    - secure: gXwvemMvpSuku/2/f3sJc+z2PLhE2Srz2C9Im9jnY01W7VUgIXvu7UFeymkKi6UdF/hmsj+wCaDDXWJA8lenuGou2W/+OuP6e6Eu91hf9VqUha9Jx/5x+I8k8ThNvEp+UlWLLelftnKZK1Dus55GhPZf5CcPU+ifu85yjbXCL68=
-    on_success: always
-    on_pull_requests: false
-
-
-# ----- Skip this until docs deploy works again ------
-#- provider: script
-#  skip_cleanup: true
-#  script: scripts/docs-deploy.sh
-#  on:
-#    tags: true
-#before_install:
-#- openssl aes-256-cbc -K $encrypted_310f735a6883_key -iv $encrypted_310f735a6883_iv -in deploy_rsa.enc -out deploy_rsa -d
-#after_install:
-#- ssh-agent -k
+    secure: FIA2Sujap77bqerxvU1PQrTbmdoJ4Lt3zisa+nO7jiQE/QqVfS+ZSHTYIqvi03Vj58YcTss+I6KUqntEEyVdECuXx4mkpdzLSET7FDkp5Uyixni/x4v+DaWHrXxkfdUS1AecQEXKRgHtKOkUBq32p25VLTHVA+ysR80N/f1XaVg=

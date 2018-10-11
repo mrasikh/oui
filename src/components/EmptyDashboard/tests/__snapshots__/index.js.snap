@@ -4,6 +4,7 @@ exports[`components/EmptyDashboard should render 1`] = `
 <EmptyDashboard
   button={
     <Button
+      isLink={false}
       onBlur={[Function]}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -100,6 +101,7 @@ exports[`components/EmptyDashboard should render 1`] = `
           className="push-double--top"
         >
           <Button
+            isLink={false}
             onBlur={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}

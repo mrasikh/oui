@@ -6,6 +6,7 @@ import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import Link from './index.js';
+import Button from '../Button';
 
 const stories = storiesOf('Link', module);
 stories
@@ -15,6 +16,7 @@ stories
       {story()}
     </div>
   ));
+
 stories
   .add('default', withInfo()(() => {
     return (
@@ -80,14 +82,33 @@ stories
       </ul>
     );
   })
-  .add('onClick', () => {
+  .add('Link that looks like a Button', () => {
     return (
-      <ul>
-        <li>
-          <Link onClick={ action('Clicked a link...') }>
-            Click Me!
-          </Link>
-        </li>
-      </ul>
+      <Link
+        newWindow={ true }
+        href={ text('href', 'http://google.com') }>
+        <Button onClick={ null }>Go To Google</Button>
+      </Link>
+    );
+  });
+
+storiesOf('Link/Fake', module)
+  .addDecorator(withKnobs)
+  .addDecorator(story => (
+    <div id="root-preview">
+      {story()}
+    </div>
+  ))
+  .add('Enabled', () => {
+    return (
+      <Link>Faux Link</Link>
+    );
+  })
+  .add('Disabled', () => {
+    return (
+      <Link
+        isDisabled={ true }>
+        Faux Link
+      </Link>
     );
   });

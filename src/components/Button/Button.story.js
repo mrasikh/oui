@@ -3,9 +3,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
+import { action } from '@storybook/addon-actions';
 
 import ButtonRow from '../ButtonRow';
 import Button from './index.js';
+import Link from '../Link';
 import ArrowsInline from '../ArrowsInline';
 
 const stories = storiesOf('Button', module);
@@ -92,4 +94,23 @@ stories
           <Button key="5" width="default" size="tight">Tight Button</Button>,
         ] }
       />);
-  });
+  })
+  .add('Button without an onClick', () => {
+    return (
+      <Button isLink={ true }>Faux Button</Button>
+    );
+  })
+  .add('Button without an onClick (disabled)', () => {
+    return (
+      <Button isLink={ true } isDisabled={ true }>Faux Button</Button>
+    );
+  })
+  .add('Button that looks like a Link', withInfo()(() => {
+    return (
+      <Button
+        style='unstyled'
+        onClick={ action('Saying hi!') }>
+        <Link>Say Hi</Link>
+      </Button>
+    );
+  }));

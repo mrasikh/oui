@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Button should render as a div if isLink is true 1`] = `
+<div
+  className="oui-button oui-button--default"
+  data-oui-component={true}
+  disabled={false}
+  onBlur={[Function]}
+>
+  Faux Button
+</div>
+`;
